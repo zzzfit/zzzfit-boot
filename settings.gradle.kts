@@ -1,0 +1,1 @@
+include("common", "core", "generator", "service", "web", "admin", "jwt", "sport")

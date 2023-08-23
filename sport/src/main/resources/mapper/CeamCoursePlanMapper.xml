@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceam.sport.mapper.CeamCoursePlanMapper">
+
+    <resultMap id="baseResult" type="com.ceam.sport.map.CoursePlanResultMap">
+        <id column="id" property="id" />
+    </resultMap>
+
+    <select id="listCeamCoursePlanVO" resultMap="baseResult">
+        SELECT t.*,
+            ta.code WEEKDAY,
+            c.name coachName,
+            c.avatar coachAvatar,
+            co.name courseName
+
+        FROM ceam_course_plan t
+        LEFT JOIN ceam_course_tab ta ON ta.id = t.tab_id
+        LEFT JOIN ceam_coach c ON c.id = t.coach_id
+        LEFT JOIN ceam_course co ON co.id = t.course_id
+    </select>
+
+    <select id="getCeamCoursePlanVO" resultMap="baseResult">
+        SELECT t.*,
+            ta.code WEEKDAY,
+            c.name coachName,
+            c.avatar coachAvatar,
+            c.signature signature,
+            co.name courseName,
+            co.time minTime,
+            co.video video,
+            co.origin_price originPrice,
+            (select latitude from ceam_store where id = t.store_id) latitude,
+            (select longitude from ceam_store where id = t.store_id) longitude,
+            (SELECT label FROM ceam_sys_dict_detail td
+                LEFT JOIN ceam_sys_dict d ON d.id = td.`dict_id`
+                WHERE d.`name` = 'affect_type' AND co.`affect` = td.`value`) affect,
+            (SELECT label FROM ceam_sys_dict_detail td
+                LEFT JOIN ceam_sys_dict d ON d.id = td.`dict_id`
+                WHERE d.`name` = 'difficulty_type' AND co.`difficulty` = td.`value` ) difficulty,
+            co.calories calories,
+            (select name from ceam_store s where s.id = t.store_id) storeName
+
+        FROM ceam_course_plan t
+        LEFT JOIN ceam_course_tab ta ON ta.id = t.tab_id
+        LEFT JOIN ceam_coach c ON c.id = t.coach_id
+        LEFT JOIN ceam_course co ON co.id = t.course_id
+        where t.id = #{id}
+    </select>
+
+</mapper>
