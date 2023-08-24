@@ -4,7 +4,6 @@ import java.sql.Date
 import java.sql.Timestamp
 import javax.persistence.*
 
-
 @Entity
 @Table(name = "customer_coupon")
 class CustomerCoupon {
@@ -97,10 +96,7 @@ class CustomerInfo {
 @Entity
 @Table(name = "customer_level")
 class CustomerLevel {
-    /**
-     * null
-     */
-    @Column(name = "id")
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = null
@@ -975,35 +971,33 @@ class Coupon {
 @Entity
 @Table(name = "commercial")
 class Commercial {
-    /**
-     * null
-     */
-    @Column(name = "id")
+
     @Id
+    @GeneratedValue
     var id: Long? = null
 
     /**
      * 广告标题
      */
-    @Column(name = "title")
+    @Column(name = "title", nullable = false, length = 64)
     var title: String? = null
 
     /**
      * 所广告的商品页面或者活动页面链接地址
      */
-    @Column(name = "link")
+    @Column(name = "link", nullable = false)
     var link: String? = null
 
     /**
      * 广告宣传图片
      */
-    @Column(name = "url")
+    @Column(name = "url", nullable = false)
     var url: String? = null
 
     /**
      * 广告位置：1则是首页
      */
-    @Column(name = "position")
+    @Column(name = "position", length = 2)
     var position: Int? = null
 
     /**
@@ -1016,13 +1010,13 @@ class Commercial {
      * 广告开始时间
      */
     @Column(name = "start_time")
-    var starttime: Timestamp? = null
+    var startTime: Timestamp? = null
 
     /**
      * 广告结束时间
      */
     @Column(name = "end_time")
-    var endtime: Timestamp? = null
+    var endTime: Timestamp? = null
 
     /**
      * null
@@ -1034,32 +1028,31 @@ class Commercial {
      * null
      */
     @Column(name = "add_time")
-    var addtime: Timestamp? = null
+    var addTime: Timestamp? = null
 
     /**
      * null
      */
     @Column(name = "add_by")
-    var addby: Long? = null
+    var addBy: Long? = null
 
     /**
      * null
      */
     @Column(name = "upd_time")
-    var updtime: Timestamp? = null
+    var updTime: Timestamp? = null
 
     /**
      * null
      */
     @Column(name = "upd_by")
-    var updby: Long? = null
+    var updBy: Long? = null
 
     /**
      * 1启用，0禁用
      */
-    @Column(name = "status")
+    @Column(name = "status", length = 2)
     var status: Int? = null
-
 }
 
 
@@ -1069,26 +1062,22 @@ class Commercial {
 @Entity
 @Table(name = "user_role")
 class UserRole {
-    /**
-     * 用户 映射 角色的关系id
-     */
-    @Column(name = "id")
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     var id: Long? = null
 
     /**
      * null
      */
-    @Column(name = "user_id")
-    var userid: Long? = null
+    @Column(name = "user_id", nullable = false)
+    var userId: Long? = null
 
     /**
      * null
      */
-    @Column(name = "role_id")
-    var roleid: Long? = null
-
+    @Column(name = "role_id", nullable = false)
+    var roleId: Long? = null
 }
 
 
@@ -1098,67 +1087,64 @@ class UserRole {
 @Entity
 @Table(name = "sys_user")
 class SysUser {
-    /**
-     * 唯一标识
-     */
-    @Column(name = "id")
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     var id: Long? = null
 
     /**
      * 用户名称
      */
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, length = 63)
     var username: String? = null
 
     /**
      * 用户密码
      */
-    @Column(name = "password")
+    @Column(name = "password", nullable = false, length = 63)
     var password: String? = null
 
     /**
      * 性别：0 未知， 1男， 1 女
      */
-    @Column(name = "sex")
+    @Column(name = "sex", length = 2)
     var sex: Int? = null
 
     /**
      * 生日
      */
     @Column(name = "birthday")
-    var birthday: Timestamp? = null
+    var birthday: Date? = null
 
     /**
      * 最近一次登录时间
      */
     @Column(name = "last_login_time")
-    var lastlogintime: Timestamp? = null
+    var lastLoginTime: Timestamp? = null
 
     /**
      * 最近一次登录IP地址
      */
-    @Column(name = "last_login_ip")
-    var lastloginip: String? = null
+    @Column(name = "last_login_ip", length = 63)
+    var lastLoginIp: String? = null
 
     /**
      * 用户层级 0 普通用户，1 VIP用户，2 区域代理用户
      */
-    @Column(name = "user_level")
-    var userlevel: Int? = null
+    @Column(name = "user_level", length = 2)
+    var userLevel: Int? = null
 
     /**
      * 用户昵称或网络名称
      */
-    @Column(name = "nickname")
+    @Column(name = "nickname", length = 63)
     var nickname: String? = null
 
     /**
      * 用户手机号码
      */
-    @Column(name = "phone_num")
-    var phonenum: String? = null
+    @Column(name = "phone_num", length = 20)
+    var phoneNum: String? = null
 
     /**
      * 用户头像图片
@@ -1169,51 +1155,50 @@ class SysUser {
     /**
      * 微信登录openid
      */
-    @Column(name = "weixin_openid")
-    var weixinopenid: String? = null
+    @Column(name = "weixin_openid", length = 63)
+    var weixinOpenId: String? = null
 
     /**
      * null
      */
     @Column(name = "share_user_id")
-    var shareuserid: Long? = null
+    var shareUserId: Long? = null
 
     /**
      * 0 可用, 1 禁用, 2 注销
      */
-    @Column(name = "status")
+    @Column(name = "status", nullable = false, length = 2)
     var status: Int? = null
 
     /**
      * null
      */
     @Column(name = "add_time")
-    var addtime: Timestamp? = null
+    var addTime: Timestamp? = null
 
     /**
      * null
      */
     @Column(name = "update_time")
-    var updatetime: Timestamp? = null
+    var updateTime: Timestamp? = null
 
     /**
      * 逻辑删除
      */
-    @Column(name = "deleted")
-    var deleted: Int? = null
+    @Column(name = "deleted", nullable = false)
+    var deleted: Boolean? = null
 
     /**
      * null
      */
     @Column(name = "dept_id")
-    var deptid: Long? = null
+    var deptId: Long? = null
 
     /**
      * null
      */
     @Column(name = "attention")
-    var attention: Int? = null
-
+    var attention: Boolean? = false
 }
 
 
@@ -1223,18 +1208,15 @@ class SysUser {
 @Entity
 @Table(name = "sys_role")
 class SysRole {
-    /**
-     * null
-     */
-    @Column(name = "id")
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     var id: Long? = null
 
     /**
      * 角色名称
      */
-    @Column(name = "name")
+    @Column(name = "name", unique = true, nullable = false, length = 63)
     var name: String? = null
 
     /**
@@ -1246,14 +1228,14 @@ class SysRole {
     /**
      * 是否启用
      */
-    @Column(name = "enabled")
-    var enabled: Int? = null
+    @Column(name = "enabled", nullable = false)
+    var enabled: Boolean? = null
 
     /**
      * 数据权限
      */
     @Column(name = "data_scope")
-    var datascope: String? = null
+    var dataScope: String? = null
 
     /**
      * 功能权限
@@ -1264,33 +1246,23 @@ class SysRole {
     /**
      * 角色级别
      */
-    @Column(name = "level")
+    @Column(name = "level", length = 2)
     var level: Int? = null
 
     /**
      * 逻辑删除
      */
     @Column(name = "deleted")
-    var deleted: Int? = null
+    var deleted: Boolean? = null
 
-    /**
-     * null
-     */
     @Column(name = "add_by")
-    var addby: Long? = null
+    var addBy: Long? = null
 
-    /**
-     * null
-     */
     @Column(name = "update_time")
-    var updatetime: Timestamp? = null
+    var updateTime: Timestamp? = null
 
-    /**
-     * null
-     */
     @Column(name = "add_time")
-    var addtime: Timestamp? = null
-
+    var addTime: Timestamp? = null
 }
 
 
@@ -1300,12 +1272,9 @@ class SysRole {
 @Entity
 @Table(name = "sys_menu")
 class SysMenu {
-    /**
-     * ID
-     */
-    @Column(name = "id")
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     var id: Long? = null
 
     //} bit(1)//FIXME not support type getIframe() {
@@ -1358,7 +1327,7 @@ class SysMenu {
      * 缓存
      */
     @Column(name = "cache")
-    var cache // bit(1)//FIXME not support type cache;
+    var cache: Boolean // bit(1)//FIXME not support type cache;
             = false
 
     //(1)//FIXME not support type getHidden() {
@@ -1367,20 +1336,20 @@ class SysMenu {
      * 是否隐藏
      */
     @Column(name = "hidden")
-    var hidden //bit(1)//FIXME not support type hidden;
+    var hidden: Boolean //bit(1)//FIXME not support type hidden;
             = false
 
     /**
      * 组件名称
      */
-    @Column(name = "component_name")
-    var componentname: String? = null
+    @Column(name = "component_name", length = 20)
+    var componentName: String? = null
 
     /**
      * 创建日期
      */
     @Column(name = "add_time")
-    var addtime: Timestamp? = null
+    var addTime: Timestamp? = null
 
     /**
      * 权限
@@ -1391,21 +1360,20 @@ class SysMenu {
     /**
      * 类型
      */
-    @Column(name = "type")
+    @Column(name = "type", length = 11)
     var type: Int? = null
 
     /**
      * null
      */
     @Column(name = "upd_time")
-    var updtime: Timestamp? = null
+    var updTime: Timestamp? = null
 
     /**
      * null
      */
     @Column(name = "deleted")
-    var deleted: Int? = null
-
+    var deleted: Boolean? = null
 }
 
 
@@ -1415,12 +1383,9 @@ class SysMenu {
 @Entity
 @Table(name = "sys_job")
 class SysJob {
-    /**
-     * ID
-     */
-    @Column(name = "id")
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     var id: Long? = null
 
     /**

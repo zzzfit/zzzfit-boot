@@ -18,5 +18,5 @@ import java.util.List;
 public interface CeamSysMenuMapper extends BaseMapper<CeamSysMenu> {
 
     List<CeamSysMenu> listByRoleIds(@Param("id") Long id,
-                                    @Param("type") int type);
+                                    @Param("type") Integer type);
 }

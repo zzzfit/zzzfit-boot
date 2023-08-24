@@ -33,7 +33,7 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
     apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
 
-    java.sourceCompatibility = JavaVersion.VERSION_17
+    java.sourceCompatibility = JavaVersion.VERSION_1_8
 
     configure<DependencyManagementExtension> {
         dependencies {
@@ -109,8 +109,14 @@ subprojects {
             dependency("ch.qos.logback:logback-core:1.2.4")
             dependency("ch.qos.logback:logback-classic:1.2.4")
             dependency("org.slf4j:slf4j-api:1.7.32")
+            dependency("org.slf4j:slf4j-simple:1.7.32")
             dependency("org.slf4j:jul-to-slf4j:1.7.32")
+
+
+
             dependency("io.rest-assured:rest-assured:4.5.1")
+            dependency("javax.persistence:javax.persistence-api:2.2")
+            dependency("org.freemarker:freemarker:2.3.29")
 
 
             // https://mvnrepository.com/artifact/org.mybatis/mybatis
@@ -143,10 +149,9 @@ subprojects {
 //            dependency("com.github.pagehelper:pagehelper-spring-boot-starter:1.3.1")
 //            dependency("com.github.pagehelper:pagehelper:5.2.1")
 //
-            dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4")
-//            dependency("org.mybatis:mybatis-spring:2.0.6")
-//
-//            dependency("com.baomidou:mybatis-plus-boot-starter:3.4.1")
+
+            dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1")
+//            dependency("com.baomidou:mybatis-plus-boot-starter:3.5.3")
 //            dependency("com.baomidou:mybatis-plus:3.4.1")
 //            dependency("com.baomidou:mybatis-plus-core:3.4.1")
 //

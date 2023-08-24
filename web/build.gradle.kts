@@ -23,6 +23,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("com.alibaba:druid-spring-boot-starter")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter")
+//    implementation("com.baomidou:mybatis-plus-boot-starter")
     implementation("com.mysql:mysql-connector-j")
 
     implementation(project(":service"))

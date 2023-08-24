@@ -64,11 +64,11 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/ceam_sports?useSSL=false&useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&nullCatalogMeansCurrent=true&allowMultiQueries=true&serverTimezone=GMT%2B8");
+        dsc.setUrl("jdbc:mysql://localhost:3306/fitness");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("123456");
+        dsc.setPassword("fitness");
         mpg.setDataSource(dsc);
 
         // 包配置

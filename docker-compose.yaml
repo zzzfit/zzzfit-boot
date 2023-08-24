@@ -8,7 +8,7 @@ services:
     image: mysql:8
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: fitness
+      MYSQL_DATABASE: ceam_sports
       MYSQL_ROOT_PASSWORD: fitness
     volumes:
       - mysql-data:/var/lib/mysql
