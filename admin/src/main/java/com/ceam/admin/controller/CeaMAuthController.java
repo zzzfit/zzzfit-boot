@@ -130,7 +130,7 @@ public class CeaMAuthController {
         // 获取运算的结果
         String result = "";
         try {
-            result = new Double(Double.parseDouble(captcha.text())).intValue() + "";
+            result = Double.valueOf(Double.parseDouble(captcha.text())).intValue() + "";
         } catch (Exception e) {
             result = captcha.text();
         }

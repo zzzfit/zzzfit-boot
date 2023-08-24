@@ -10,6 +10,18 @@ plugins {
     kotlin("plugin.jpa") version "1.9.10"
 }
 
+allprojects {
+    repositories {
+        maven { url = URI("https://maven.aliyun.com/repository/public") }
+        maven { url = URI("https://maven.aliyun.com/repository/google") }
+        maven { url = URI("https://maven.aliyun.com/repository/central") }
+        maven { url = URI("https://maven.aliyun.com/repository/jcenter") }
+        mavenCentral()
+        maven { url = URI("https://plugins.gradle.org/m2/") }
+        google()
+    }
+}
+
 subprojects {
     group = "cloud.zzzfit.boot"
     version = "0.0.1-SNAPSHOT"
@@ -19,16 +31,7 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
 
-    java.sourceCompatibility = JavaVersion.VERSION_1_8
-
-    repositories {
-        maven { url = URI("https://maven.aliyun.com/repository/public") }
-        maven { url = URI("https://maven.aliyun.com/repository/google") }
-        maven { url = URI("https://maven.aliyun.com/repository/central") }
-        maven { url = URI("https://maven.aliyun.com/repository/jcenter") }
-        mavenCentral()
-        google()
-    }
+    java.sourceCompatibility = JavaVersion.VERSION_17
 
     configure<DependencyManagementExtension> {
         dependencies {
@@ -46,7 +49,7 @@ subprojects {
             dependency("org.springframework.data:spring-data-commons:2.7.14")
             dependency("org.springframework.session:spring-session-data-redis:2.7.3")
 
-            dependency("org.projectlombok:lombok:1.18.16")
+            dependency("org.projectlombok:lombok:1.18.20")
 
             dependency("com.fasterxml.jackson.core:jackson-annotations:2.14.0")
             dependency("com.fasterxml.jackson.core:jackson-core:2.14.0")
@@ -197,5 +200,15 @@ subprojects {
 //            dependency("com.google.code.gson:gson:2.8.8")
 //            dependency("org.dom4j:dom4j:2.1.3")
         }
+    }
+//    tasks.withType<KotlinCompile> {
+//        kotlinOptions {
+//             freeCompilerArgs += "-Xjsr305=strict"
+//            jvmTarget = "17"
+//        }
+//    }
+
+    tasks.withType<JavaCompile> {
+        options.encoding = "UTF-8"
     }
 }

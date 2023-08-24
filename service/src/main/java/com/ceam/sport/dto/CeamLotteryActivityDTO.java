@@ -3,10 +3,12 @@ package com.ceam.sport.dto;
 import com.ceam.admin.dto.PageableDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class CeamLotteryActivityDTO extends PageableDTO {
 
     private Long id;
