@@ -1,0 +1,22 @@
+version: '3'
+services:
+  adminier:
+    image: adminer:latest
+    ports:
+      - '8080:8080'
+  mysql:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: fitness
+      MYSQL_ROOT_PASSWORD: fitness
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+  redis:
+    image: redis:6
+    ports:
+      - '6379:6379'
+volumes:
+  mysql-data:
