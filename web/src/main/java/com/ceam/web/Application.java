@@ -13,17 +13,10 @@ import org.springframework.context.annotation.Bean;
  * 2023/01/27 09:44
  **/
 @SpringBootApplication(scanBasePackages = {"com.ceam"})
-public class CeaMMallApp {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(CeaMMallApp.class, args);
-        System.out.println(
-                "    __  ____   __     __     __     \n" +
-                        " //    ||     //\\    //\\    //\\    \n" +
-                        "||     ||--- //--\\  //  \\  //  \\   \n" +
-                        "  \\ __ ||___//    \\//    \\//    \\  \n" +
-
-                        "\n(♥◠‿◠)ﾉﾞCSports启动成功ლ(´ڡ`ლ)ﾞ  \n");
+        SpringApplication.run(Application.class, args);
     }
 
     @Bean

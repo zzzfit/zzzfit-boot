@@ -31,6 +31,10 @@ dependencies {
     implementation(project(":admin"))
     implementation(project(":sport"))
 
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("io.rest-assured:rest-assured")
 }
 
 //tasks.withType<KotlinCompile> {

@@ -8,16 +8,17 @@ plugins {
     kotlin("jvm") version "1.9.10"
     kotlin("plugin.spring") version "1.9.10"
     kotlin("plugin.jpa") version "1.9.10"
+    kotlin("plugin.allopen") version "1.9.10"
 }
 
 allprojects {
     repositories {
+        maven { url = URI("https://plugins.gradle.org/m2/") }
         maven { url = URI("https://maven.aliyun.com/repository/public") }
         maven { url = URI("https://maven.aliyun.com/repository/google") }
         maven { url = URI("https://maven.aliyun.com/repository/central") }
         maven { url = URI("https://maven.aliyun.com/repository/jcenter") }
         mavenCentral()
-        maven { url = URI("https://plugins.gradle.org/m2/") }
         google()
     }
 }
@@ -30,6 +31,7 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+    apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
 
     java.sourceCompatibility = JavaVersion.VERSION_17
 
@@ -108,6 +110,7 @@ subprojects {
             dependency("ch.qos.logback:logback-classic:1.2.4")
             dependency("org.slf4j:slf4j-api:1.7.32")
             dependency("org.slf4j:jul-to-slf4j:1.7.32")
+            dependency("io.rest-assured:rest-assured:4.5.1")
 
 
             // https://mvnrepository.com/artifact/org.mybatis/mybatis
@@ -207,6 +210,10 @@ subprojects {
 //            jvmTarget = "17"
 //        }
 //    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"

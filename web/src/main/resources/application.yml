@@ -3,28 +3,32 @@ server:
 
 spring:
   datasource:
-    name: ceam_ds
+#    name: fitness
     #url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/ceam_sports?useSSL=false&useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&nullCatalogMeansCurrent=true&allowMultiQueries=true&serverTimezone=GMT%2B8
-    url: jdbc:mysql://${MYSQL_HOST:cmysql}:${MYSQL_PORT:3306}/ceam_sports?useSSL=false&useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&nullCatalogMeansCurrent=true&allowMultiQueries=true&serverTimezone=GMT%2B8
-    username: ${MYSQL_ROOT_USERNAME:root}
-    password: ${MYSQL_ROOT_PASSWORD:123456}
+#    url: jdbc:mysql://${MYSQL_HOST:cmysql}:${MYSQL_PORT:3306}/ceam_sports?useSSL=false&useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&nullCatalogMeansCurrent=true&allowMultiQueries=true&serverTimezone=GMT%2B8
+#    username: ${MYSQL_ROOT_USERNAME:root}
+#    password: ${MYSQL_ROOT_PASSWORD:123456}
+    username: fitness
+    password: fitness
+    url: jdbc:mysql://localhost:3306/fitness
+
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    druid:
-      filters: stat
-      maxActive: 20 #最大连接数
-      initialSize: 1 #连接池初始化大小
-      maxWait: 60000
-      minIdle: 1 #最小空闲连接数
-      timeBetweenEvictionRunsMillis: 60000
-      minEvictableIdleTimeMillis: 300000
-      validationQuery: select 'x'
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      poolPreparedStatements: true
-      maxOpenPreparedStatements: 20
+#    druid:
+#      filters: stat
+#      maxActive: 20 #最大连接数
+#      initialSize: 1 #连接池初始化大小
+#      maxWait: 60000
+#      minIdle: 1 #最小空闲连接数
+#      timeBetweenEvictionRunsMillis: 60000
+#      minEvictableIdleTimeMillis: 300000
+#      validationQuery: select 'x'
+#      testWhileIdle: true
+#      testOnBorrow: false
+#      testOnReturn: false
+#      poolPreparedStatements: true
+#      maxOpenPreparedStatements: 20
 
 #jwt
 jwt:
