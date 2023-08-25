@@ -118,46 +118,15 @@ subprojects {
             dependency("javax.persistence:javax.persistence-api:2.2")
             dependency("org.freemarker:freemarker:2.3.29")
 
-
-            // https://mvnrepository.com/artifact/org.mybatis/mybatis
-            dependency("org.mybatis:mybatis:3.5.13")
-
-//            dependency("org.yaml:snakeyaml:1.29")
-//            dependency("org.apache.commons:commons-lang3:3.9")
-//            dependency("org.apache.commons:commons-exec:1.3")
-//            dependency("org.apache.commons:commons-pool2:2.7.0")
-//            dependency("commons-collections:commons-collections:3.2")
-//            dependency("org.apache.commons:commons-csv:1.9.0")
-//            dependency("commons-net:commons-net:3.8.0")
-//            dependency("commons-lang:commons-lang:2.6")
-//            dependency("commons-io:commons-io:2.11.0")
-//
-//            dependency("com.ecwid.consul:consul-api:1.4.5")
-//
-//            dependency("cn.hutool:hutool-all:5.7.5")
-//            dependency("cn.hutool:hutool-core:5.7.5")
-//            dependency("cn.hutool:hutool-crypto:5.7.5")
-//            dependency("io.github.openfeign:feign-core:11.6")
-//            dependency("io.github.openfeign.form:feign-form:3.8.0")
-//
-//            dependency("org.aspectj:aspectjrt:1.9.7")
-//            dependency("org.aspectj:aspectjweaver:1.9.7")
-//
-//            dependency("com.oracle.database.jdbc:ojdbc8:21.1.0.0")
             dependency("com.alibaba:druid-spring-boot-starter:1.2.6")
-//            dependency("com.alibaba:druid:1.2.6")
-//            dependency("com.github.pagehelper:pagehelper-spring-boot-starter:1.3.1")
-//            dependency("com.github.pagehelper:pagehelper:5.2.1")
-//
 
             dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1")
-//            dependency("com.baomidou:mybatis-plus-boot-starter:3.5.3")
-//            dependency("com.baomidou:mybatis-plus:3.4.1")
-//            dependency("com.baomidou:mybatis-plus-core:3.4.1")
-//
-//            dependency("com.baomidou:mybatis-plus-extension:3.4.1")
-//            dependency("com.baomidou:dynamic-datasource-spring-boot-starter:3.4.1")
-//            dependency("com.baomidou:mybatis-plus-generator:3.4.1")
+            dependency("com.baomidou:mybatis-plus-boot-starter:3.5.3.2")
+            dependency("com.baomidou:mybatis-plus:3.5.3.2")
+            dependency("com.baomidou:mybatis-plus-core:3.5.3.2")
+            dependency("com.baomidou:mybatis-plus-extension:3.5.3.2")
+            dependency("com.baomidou:dynamic-datasource-spring-boot-starter:3.5.3.2")
+            dependency("com.baomidou:mybatis-plus-generator:3.5.3.2")
 //
 //            dependency("org.jgrapht:jgrapht-core:1.4.0")
 //
@@ -216,6 +185,9 @@ subprojects {
 //        }
 //    }
 
+//    tasks.withType<ProcessResources> {
+//         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//    }
     tasks.withType<Test> {
         useJUnitPlatform()
     }

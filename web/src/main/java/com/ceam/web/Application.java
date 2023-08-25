@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Bean;
  * 2023/01/27 09:44
  **/
 @SpringBootApplication(scanBasePackages = {"com.ceam"})
-@MapperScan("com.ceam.*.mapper")
 public class Application {
 
     public static void main(String[] args) {

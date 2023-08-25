@@ -21,14 +21,3 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":jwt"))
 }
-
-//tasks.withType<KotlinCompile> {
-//    kotlinOptions {
-//        freeCompilerArgs += "-Xjsr305=strict"
-//        jvmTarget = "17"
-//    }
-//}
-//
-//tasks.withType<Test> {
-//    useJUnitPlatform()
-//}

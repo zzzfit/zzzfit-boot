@@ -23,7 +23,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("com.alibaba:druid-spring-boot-starter")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter")
-//    implementation("com.baomidou:mybatis-plus-boot-starter")
+//    implementation("com.baomidou:mybatis-plus")
+//    implementation("com.baomidou:mybatis-plus-extension")
+
     implementation("com.mysql:mysql-connector-j")
 
     implementation(project(":service"))
@@ -38,13 +40,15 @@ dependencies {
     testImplementation("io.rest-assured:rest-assured")
 }
 
-//tasks.withType<KotlinCompile> {
-//    kotlinOptions {
-//        freeCompilerArgs += "-Xjsr305=strict"
-//        jvmTarget = "17"
+//tasks.jar {
+//    manifest {
+//        attributes(
+//            "Main-Class" to "com.ceam.web.Application",
+//        )
 //    }
-//}
-//
-//tasks.withType<Test> {
-//    useJUnitPlatform()
+//    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//    from(configurations.runtimeClasspath.get()
+////        .filter { it.name != "sonar-application.jar" }
+//        .map { if (it.isDirectory) it else zipTree(it) }
+//    )
 //}
