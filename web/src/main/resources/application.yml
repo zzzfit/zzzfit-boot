@@ -71,6 +71,6 @@ file:
   avatar: D:\bmall\avatar\
 
 ## 开发环境用DEBUG，生产环境是否DEBUG
-#logging:
-#  level:
-#    com.ceam: DEBUG
+logging:
+  level:
+    com.ceam: DEBUG

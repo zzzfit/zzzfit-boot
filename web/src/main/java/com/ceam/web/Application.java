@@ -1,6 +1,7 @@
 package com.ceam.web;
 
 import com.ceam.common.utils.ApplicationContextHolder;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Bean;
  * 2023/01/27 09:44
  **/
 @SpringBootApplication(scanBasePackages = {"com.ceam"})
+@MapperScan("com.ceam.*.mapper")
 public class Application {
 
     public static void main(String[] args) {
