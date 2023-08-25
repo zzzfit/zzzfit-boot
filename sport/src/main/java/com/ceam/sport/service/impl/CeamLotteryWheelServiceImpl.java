@@ -87,7 +87,9 @@ public class CeamLotteryWheelServiceImpl
     @Override
     public boolean remove(Set<Long> ids) {
         // 活动进行中不做移除
-        boolean b = removeBatchByIds(ids);
-        return b;
+//        boolean b = removeBatchByIds(ids);
+//        return b;
+
+        return removeBatchByIds(ids);
     }
 }

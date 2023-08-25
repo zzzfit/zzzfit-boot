@@ -12,7 +12,8 @@ dependencies {
     implementation("org.springframework.data:spring-data-commons")
 
     implementation("org.springframework:spring-web")
-    implementation("com.github.whvcse:easy-captcha")
+//    implementation("com.github.whvcse:easy-captcha")
+//    implementation("com.sonsure:easy-captcha")
     implementation("org.springframework.security:spring-security-core")
     implementation("org.springframework.security:spring-security-config")
     implementation("org.apache.commons:commons-lang3")
@@ -20,4 +21,6 @@ dependencies {
     implementation(project(":service"))
     implementation(project(":common"))
     implementation(project(":jwt"))
+    implementation(project(":easycaptcha"))
+
 }

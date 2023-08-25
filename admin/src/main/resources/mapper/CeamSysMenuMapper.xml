@@ -7,7 +7,7 @@
         select t.* from ceam_sys_menu t
         left join ceam_role_menu r on r.menu_id = t.id
         where r.role_id = #{id}
-        <if test="type != null and type == 1">
+        <if test="type != null and type == '1'">
             and t.type = #{type}
         </if>
 

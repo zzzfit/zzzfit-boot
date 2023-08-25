@@ -7,7 +7,6 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt")
     implementation("org.springframework:spring-beans")
     implementation("org.springframework.security:spring-security-core")
-//    implementation("org.springframework.security:spring-security-config")
 
     implementation("org.slf4j:slf4j-api")
     implementation("com.alibaba:fastjson")
@@ -16,14 +15,3 @@ dependencies {
     implementation(project(":service"))
     implementation(project(":common"))
 }
-
-//tasks.withType<KotlinCompile> {
-//    kotlinOptions {
-//        freeCompilerArgs += "-Xjsr305=strict"
-//        jvmTarget = "17"
-//    }
-//}
-//
-//tasks.withType<Test> {
-//    useJUnitPlatform()
-//}

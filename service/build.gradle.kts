@@ -6,14 +6,3 @@ dependencies {
     implementation("org.springframework.security:spring-security-core")
     implementation("com.baomidou:mybatis-plus")
 }
-
-//tasks.withType<KotlinCompile> {
-//    kotlinOptions {
-//        freeCompilerArgs += "-Xjsr305=strict"
-//        jvmTarget = "17"
-//    }
-//}
-//
-//tasks.withType<Test> {
-//    useJUnitPlatform()
-//}

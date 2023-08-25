@@ -33,7 +33,11 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
     apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
 
-    java.sourceCompatibility = JavaVersion.VERSION_1_8
+    java.sourceCompatibility = JavaVersion.VERSION_17
+
+//    sourceSets.main {
+//        resources.srcDirs("src/main/java", "src/main/resources")
+//    }
 
     configure<DependencyManagementExtension> {
         dependencies {
@@ -68,7 +72,8 @@ subprojects {
             dependency("org.springframework:spring-beans:5.3.29")
             dependency("org.springframework:spring-webmvc:5.3.29")
 
-            dependency("com.github.whvcse:easy-captcha:1.6.2")
+//            dependency("com.github.whvcse:easy-captcha:1.6.2")
+//            dependency("com.sonsure:easy-captcha:1.6.2")
 
             dependency("org.springframework:spring-context:5.3.29")
             dependency("com.google.code.gson:gson:2.10")
@@ -83,9 +88,9 @@ subprojects {
             dependency("com.baomidou:mybatis-plus-core:3.5.3")
             dependency("com.baomidou:mybatis-plus-extension:3.5.3")
 
-            dependency("org.springframework.security:spring-security-core:5.8.6")
-            dependency("org.springframework.security:spring-security-config:5.8.6")
-            dependency("org.springframework.security:spring-security-web:5.8.6")
+            dependency("org.springframework.security:spring-security-core:5.7.1")
+            dependency("org.springframework.security:spring-security-config:5.7.1")
+            dependency("org.springframework.security:spring-security-web:5.7.1")
 
 //            dependency("org.springframework.cloud:spring-cloud-commons:3.0.4")
 //            dependency("org.springframework.cloud:spring-cloud-context:3.0.4")
@@ -100,7 +105,6 @@ subprojects {
 //
 //            dependency("org.springframework.security.oauth:spring-security-oauth2:2.5.1.RELEASE")
 //
-//            dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
             dependency("com.mysql:mysql-connector-j:8.1.0")
 
 //            dependency("net.javacrumbs.shedlock:shedlock-spring:4.26.0")
@@ -120,13 +124,15 @@ subprojects {
 
             dependency("com.alibaba:druid-spring-boot-starter:1.2.6")
 
-            dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1")
-            dependency("com.baomidou:mybatis-plus-boot-starter:3.5.3.2")
-            dependency("com.baomidou:mybatis-plus:3.5.3.2")
-            dependency("com.baomidou:mybatis-plus-core:3.5.3.2")
-            dependency("com.baomidou:mybatis-plus-extension:3.5.3.2")
-            dependency("com.baomidou:dynamic-datasource-spring-boot-starter:3.5.3.2")
-            dependency("com.baomidou:mybatis-plus-generator:3.5.3.2")
+//            dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1")
+            dependency("com.baomidou:mybatis-plus-boot-starter:3.5.3")
+            dependency("com.baomidou:mybatis-plus:3.5.3")
+            dependency("com.baomidou:mybatis-plus-core:3.5.3")
+            dependency("com.baomidou:mybatis-plus-annotation:3.5.3")
+
+            dependency("com.baomidou:mybatis-plus-extension:3.5.3")
+            dependency("com.baomidou:dynamic-datasource-spring-boot-starter:3.5.3")
+            dependency("com.baomidou:mybatis-plus-generator:3.5.3")
 //
 //            dependency("org.jgrapht:jgrapht-core:1.4.0")
 //
@@ -178,16 +184,7 @@ subprojects {
 //            dependency("org.dom4j:dom4j:2.1.3")
         }
     }
-//    tasks.withType<KotlinCompile> {
-//        kotlinOptions {
-//             freeCompilerArgs += "-Xjsr305=strict"
-//            jvmTarget = "17"
-//        }
-//    }
 
-//    tasks.withType<ProcessResources> {
-//         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-//    }
     tasks.withType<Test> {
         useJUnitPlatform()
     }

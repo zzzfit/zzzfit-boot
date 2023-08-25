@@ -13,12 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * 2023/01/20 14:57
  **/
 @Configuration
-@MapperScan({
-//        "com.ceam.*.mapper",
-        "com.ceam.admin.mapper",
-        "com.ceam.sport.mapper"
-})
-//@MapperScan("com.ceam.*.mapper")
+@MapperScan({ "com.ceam.**.mapper" })
 public class MyBatisPlusConfig {
 
     /**
