@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
@@ -26,6 +26,7 @@ public class JwtTokenUtil {
 
     @Autowired
     private RedisUtils redisUtils;
+
     @Autowired
     private SecurityProperties properties;
 

@@ -25,7 +25,7 @@ public class TokenConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFi
 
     @Override
     public void configure(HttpSecurity http) {
-        TokenFilter customFilter = new TokenFilter(tokenUtil, onlineUserService, securityProperties);
-        http.addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class);
+        var filter = new TokenFilter(tokenUtil, onlineUserService, securityProperties);
+        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }
 }

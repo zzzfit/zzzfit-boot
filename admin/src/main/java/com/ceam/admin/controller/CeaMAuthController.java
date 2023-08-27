@@ -31,7 +31,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -45,11 +45,14 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/api/auth")
 public class CeaMAuthController {
 
-    @Value("${loginCode.expiration}")
+    @Value("${loginCode.expiration:2}") // #登录图形验证码有效时间/分钟
     private Long expiration;
+
     @Value("${rsa.private_key}")
     private String privateKey;
-    @Value("${single.login}")
+
+
+    @Value("${single.login:false}") // # 是否限制单用户登录
     private Boolean singleLogin;
     private final RedisUtils redisUtils;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;

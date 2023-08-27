@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * 腾讯位置服务https://lbs.qq.com/getPoint/
@@ -23,14 +24,17 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(
         basePackages = {"com.ceam"}
 )
+@EnableJpaRepositories(
+        basePackages = {"com.ceam.core"}
+)
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    public ApplicationContextHolder springContextHolder() {
-        return new ApplicationContextHolder();
-    }
+//    @Bean
+//    public ApplicationContextHolder springContextHolder() {
+//        return new ApplicationContextHolder();
+//    }
 }

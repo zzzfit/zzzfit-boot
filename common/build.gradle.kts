@@ -1,7 +1,7 @@
 dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-    compileOnly("javax.servlet:javax.servlet-api")
+    implementation("jakarta.servlet:jakarta.servlet-api")
 
     implementation("commons-codec:commons-codec")
     implementation("com.fasterxml.jackson.core:jackson-annotations")
@@ -16,16 +16,5 @@ dependencies {
     implementation("com.google.guava:guava")
     implementation("com.baomidou:mybatis-plus")
     implementation("org.springframework.security:spring-security-core")
-    implementation("org.slf4j:slf4j-api:1.7.32")
+    implementation("org.slf4j:slf4j-api")
 }
-
-//tasks.withType<KotlinCompile> {
-//    kotlinOptions {
-//        freeCompilerArgs += "-Xjsr305=strict"
-//        jvmTarget = "17"
-//    }
-//}
-//
-//tasks.withType<Test> {
-//    useJUnitPlatform()
-//}

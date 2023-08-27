@@ -18,7 +18,8 @@ public class CourseWeekUtil {
 
     static {
         map = new HashMap<>();
-        map.put(1, "明日");
+//        map.put(1, "明日");
+        map.put(1, "周日");
         map.put(2, "周一");
         map.put(3, "周二");
         map.put(4, "周三");

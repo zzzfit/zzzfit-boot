@@ -3,9 +3,7 @@ apply(plugin = "org.springframework.boot")
 dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-    compileOnly("javax.servlet:javax.servlet-api")
-
-    implementation("org.slf4j:jul-to-slf4j")
+    implementation("jakarta.servlet:jakarta.servlet-api")
 
     implementation("org.springframework.security:spring-security-core")
     implementation("org.springframework.security:spring-security-web")
@@ -21,14 +19,22 @@ dependencies {
     implementation("org.springframework.session:spring-session-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-logging")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    implementation("org.springframework.security:spring-security-oauth2-authorization-server")
+
+    implementation("com.h2database:h2")
+
     implementation("com.alibaba:druid-spring-boot-starter")
-//    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter")
     implementation("com.baomidou:mybatis-plus-boot-starter")
-
     implementation("com.baomidou:mybatis-plus")
-//    implementation("com.baomidou:mybatis-plus-annotation")
-    implementation("com.mysql:mysql-connector-j")
 
+    implementation("com.mysql:mysql-connector-j")
+    implementation("org.hibernate:hibernate-core")
+    implementation("org.hibernate:hibernate-validator")
+
+    implementation(project(":core"))
     implementation(project(":service"))
     implementation(project(":common"))
     implementation(project(":jwt"))
@@ -40,16 +46,3 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("io.rest-assured:rest-assured")
 }
-
-//tasks.jar {
-//    manifest {
-//        attributes(
-//            "Main-Class" to "com.ceam.web.Application",
-//        )
-//    }
-//    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-//    from(configurations.runtimeClasspath.get()
-////        .filter { it.name != "sonar-application.jar" }
-//        .map { if (it.isDirectory) it else zipTree(it) }
-//    )
-//}

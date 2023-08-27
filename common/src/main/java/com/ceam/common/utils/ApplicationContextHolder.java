@@ -1,6 +1,7 @@
 package com.ceam.common.utils;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -14,7 +15,7 @@ import java.util.function.Consumer;
  * 2023/01/19 22:08
  **/
 @Slf4j
-@SuppressWarnings("all")
+//@SuppressWarnings("all")
 public class ApplicationContextHolder implements ApplicationContextAware, DisposableBean {
 
     private static ApplicationContext applicationContext = null;
@@ -30,10 +31,10 @@ public class ApplicationContextHolder implements ApplicationContextAware, Dispos
     /**
      * 根据给定beanName从applicationContext上下文获取Bean, 强制类型转换为所赋值对象的类型.
      */
-    public static <T> T getBean(String beanName) {
-        assertContextInjected();
-        return (T) applicationContext.getBean(beanName);
-    }
+//    public static <T> T getBean(String beanName) {
+//        assertContextInjected();
+//        return (T) applicationContext.getBean(beanName);
+//    }
 
     /**
      * 可以使用别名，以防冲突
@@ -77,7 +78,7 @@ public class ApplicationContextHolder implements ApplicationContextAware, Dispos
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(@NotNull ApplicationContext applicationContext) throws BeansException {
         if (ApplicationContextHolder.applicationContext != null) {
             log.warn("ApplicationContextHolder中的ApplicationContext被覆盖, 原有ApplicationContext为:"
                     + ApplicationContextHolder.applicationContext);

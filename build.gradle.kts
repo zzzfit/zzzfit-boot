@@ -1,17 +1,26 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URI
 
-plugins {
-    id("org.springframework.boot") version "2.7.14"
-    id("io.spring.dependency-management") version "1.1.3"
-    kotlin("jvm") version "1.9.10"
-    kotlin("plugin.spring") version "1.9.10"
-    kotlin("plugin.jpa") version "1.9.10"
-    kotlin("plugin.allopen") version "1.9.10"
+buildscript {
+    val kotlinVersion = "1.9.10"
+    val springBootVersion = "3.1.3"//""2.7.14"
+
+    repositories {
+        maven { url = java.net.URI("https://plugins.gradle.org/m2/") }
+        maven { url = java.net.URI("https://maven.aliyun.com/repository/central") }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+        classpath("io.spring.gradle:dependency-management-plugin:1.1.3")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+    }
 }
 
 allprojects {
+    group = "cloud.zzzfit.boot"
+    version = "0.0.1-SNAPSHOT"
+
     repositories {
         maven { url = URI("https://plugins.gradle.org/m2/") }
         maven { url = URI("https://maven.aliyun.com/repository/public") }
@@ -21,39 +30,32 @@ allprojects {
         mavenCentral()
         google()
     }
-}
 
-subprojects {
-    group = "cloud.zzzfit.boot"
-    version = "0.0.1-SNAPSHOT"
-//    apply(plugin = "org.springframework.boot")
+    apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
-    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
-    apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
-
-    java.sourceCompatibility = JavaVersion.VERSION_17
-
-//    sourceSets.main {
-//        resources.srcDirs("src/main/java", "src/main/resources")
-//    }
+//    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+//    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+//    apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
 
     configure<DependencyManagementExtension> {
         dependencies {
-            dependency("org.springframework.boot:spring-boot-starter-parent:2.7.14")
-            dependency("org.springframework.boot:spring-boot-starter-test:2.7.14")
-            dependency("org.springframework.boot:spring-boot-starter-validation:2.7.14")
-            dependency("org.springframework.boot:spring-boot-starter-quartz:2.7.14")
-            dependency("org.springframework.boot:spring-boot-starter-data-redis:2.7.14")
-            dependency("org.springframework.boot:spring-boot-starter-data-jpa:2.7.14")
-            dependency("org.springframework.boot:spring-boot-autoconfigure:2.7.14")
-            dependency("org.springframework.data:spring-data-commons:2.7.14")
+//            dependency("org.springframework.boot:spring-boot-starter-parent:2.7.14")
+//            dependency("org.springframework.boot:spring-boot-starter-test:2.7.14")
+//            dependency("org.springframework.boot:spring-boot-starter-validation:2.7.14")
+//            dependency("org.springframework.boot:spring-boot-starter-quartz:2.7.14")
+//            dependency("org.springframework.boot:spring-boot-starter-data-redis:2.7.14")
+//            dependency("org.springframework.boot:spring-boot-starter-data-jpa:2.7.14")
+//            dependency("org.springframework.boot:spring-boot-autoconfigure:2.7.14")
+//            dependency("org.springframework.boot:spring-boot-starter-oauth2-resource-server:2.7.14")
+//            dependency("org.springframework.boot:spring-boot-autoconfigure:2.7.14")
+//            dependency("org.springframework.data:spring-data-commons:2.7.14")
+//            dependency("org.springframework.data:spring-data-redis:2.7.14")
+//            dependency("org.springframework.data:spring-data-commons:2.7.14")
 
-            dependency("org.springframework.boot:spring-boot-autoconfigure:2.7.14")
-            dependency("org.springframework.data:spring-data-redis:2.7.14")
-            dependency("org.springframework.data:spring-data-commons:2.7.14")
-            dependency("org.springframework.session:spring-session-data-redis:2.7.3")
+            dependency("org.springframework.security:spring-security-oauth2-authorization-server:1.1.2")
+
+//            dependency("org.springframework.session:spring-session-data-redis:2.7.3")
 
             dependency("org.projectlombok:lombok:1.18.20")
 
@@ -68,14 +70,10 @@ subprojects {
             dependency("javax.validation:validation-api:2.0.1.Final")
 
             dependency("com.alibaba:fastjson:2.0.39")
-            dependency("org.springframework:spring-web:5.3.29")
-            dependency("org.springframework:spring-beans:5.3.29")
-            dependency("org.springframework:spring-webmvc:5.3.29")
 
 //            dependency("com.github.whvcse:easy-captcha:1.6.2")
 //            dependency("com.sonsure:easy-captcha:1.6.2")
 
-            dependency("org.springframework:spring-context:5.3.29")
             dependency("com.google.code.gson:gson:2.10")
             dependency("io.jsonwebtoken:jjwt:0.9.1")
 
@@ -88,9 +86,9 @@ subprojects {
             dependency("com.baomidou:mybatis-plus-core:3.5.3")
             dependency("com.baomidou:mybatis-plus-extension:3.5.3")
 
-            dependency("org.springframework.security:spring-security-core:5.7.1")
-            dependency("org.springframework.security:spring-security-config:5.7.1")
-            dependency("org.springframework.security:spring-security-web:5.7.1")
+            dependency("org.springframework.security:spring-security-core:6.1.3")
+            dependency("org.springframework.security:spring-security-config:6.1.3")
+            dependency("org.springframework.security:spring-security-web:6.1.3")
 
 //            dependency("org.springframework.cloud:spring-cloud-commons:3.0.4")
 //            dependency("org.springframework.cloud:spring-cloud-context:3.0.4")
@@ -106,25 +104,12 @@ subprojects {
 //            dependency("org.springframework.security.oauth:spring-security-oauth2:2.5.1.RELEASE")
 //
             dependency("com.mysql:mysql-connector-j:8.1.0")
-
-//            dependency("net.javacrumbs.shedlock:shedlock-spring:4.26.0")
-//            dependency("net.javacrumbs.shedlock:shedlock-provider-redis-spring:4.26.0")
-//            dependency("com.alibaba:fastjson:1.2.+")
-            dependency("ch.qos.logback:logback-core:1.2.4")
-            dependency("ch.qos.logback:logback-classic:1.2.4")
-            dependency("org.slf4j:slf4j-api:1.7.32")
-            dependency("org.slf4j:slf4j-simple:1.7.32")
-            dependency("org.slf4j:jul-to-slf4j:1.7.32")
-
-
-
+            dependency("ch.qos.logback:logback-classic:1.4.11")
             dependency("io.rest-assured:rest-assured:4.5.1")
             dependency("javax.persistence:javax.persistence-api:2.2")
             dependency("org.freemarker:freemarker:2.3.29")
 
             dependency("com.alibaba:druid-spring-boot-starter:1.2.6")
-
-//            dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1")
             dependency("com.baomidou:mybatis-plus-boot-starter:3.5.3")
             dependency("com.baomidou:mybatis-plus:3.5.3")
             dependency("com.baomidou:mybatis-plus-core:3.5.3")
@@ -133,6 +118,10 @@ subprojects {
             dependency("com.baomidou:mybatis-plus-extension:3.5.3")
             dependency("com.baomidou:dynamic-datasource-spring-boot-starter:3.5.3")
             dependency("com.baomidou:mybatis-plus-generator:3.5.3")
+            dependency("com.h2database:h2:2.2.220")
+            dependency("org.hibernate:hibernate-core:6.2.7.Final")
+            dependency("org.hibernate:hibernate-validator:8.0.1.Final")
+
 //
 //            dependency("org.jgrapht:jgrapht-core:1.4.0")
 //
@@ -190,6 +179,7 @@ subprojects {
     }
 
     tasks.withType<JavaCompile> {
+        sourceCompatibility = "17"
         options.encoding = "UTF-8"
     }
 }

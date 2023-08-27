@@ -13,6 +13,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  * uniApp 也要配上，否则has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resourc
  *

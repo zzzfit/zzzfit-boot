@@ -1,7 +1,7 @@
 dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-    compileOnly("javax.servlet:javax.servlet-api")
+    implementation("jakarta.servlet:jakarta.servlet-api")
 
     implementation("com.google.code.gson:gson")
     implementation("io.jsonwebtoken:jjwt")

@@ -17,6 +17,7 @@ import com.ceam.sport.vo.CeamVipVO;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public class CeamVipServiceImpl
                 BigDecimal amount = item.getAmount();
                 BigDecimal discount = item.getDiscount();
                 BigDecimal discountAmount = amount.multiply(discount);
-                item.setDiscountAmount(discountAmount.setScale(0, BigDecimal.ROUND_HALF_UP));
+                item.setDiscountAmount(discountAmount.setScale(0, RoundingMode.HALF_UP));
             }
         });
         return ceamVipVOS;
@@ -57,8 +58,6 @@ public class CeamVipServiceImpl
         Page<CeamVip> page = new Page<>();
         page.setCurrent((long)pageableDTO.getPage() + 1);
         Page<CeamVip> ceamVipPage = baseMapper.selectPage(page, queryWrapper);
-        IPage<CeamVipVO> ceamVipVOIPage = PageVOUtil
-                .copyToPageVO(ceamVipPage, CeamVipVO.class);
-        return ceamVipVOIPage;
+        return PageVOUtil.copyToPageVO(ceamVipPage, CeamVipVO.class);
     }
 }

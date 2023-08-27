@@ -7,7 +7,7 @@ import com.ceam.common.constants.UrlConstants;
 import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.UserAgent;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -639,7 +639,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     public static String truncateMessage(String description, int length) {
-        org.springframework.util.Assert.state(length > 0);
+        org.springframework.util.Assert.state(length > 0, "");
         if ((description != null) && (description.length() > length)) {
             return description.substring(0, length);
         }

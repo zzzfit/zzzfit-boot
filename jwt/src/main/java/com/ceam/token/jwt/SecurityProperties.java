@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 public class SecurityProperties {
 
-    @Value("${jwt.token-header}")
+    @Value("${jwt.token-header:Authorization}")
     private String header;
 
-    @Value("${jwt.token-start-with}")
+    @Value("${jwt.token-start-with:Bearer}")
     private String tokenStartWith;
 
     @Value("${jwt.base64-secret}")
@@ -24,7 +24,7 @@ public class SecurityProperties {
     @Value("${jwt.secret}")
     private String secret;
 
-    @Value("${jwt.validity}")
+    @Value("${jwt.validity:36000000}")
     private Long validity;
 
     @Value("${jwt.online-key}")
