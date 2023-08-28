@@ -1,0 +1,13 @@
+package cloud.zzzfit.upms
+
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository
+
+
+interface JpaRegisteredClientRepository: RegisteredClientRepository
+
+interface JpaOAuth2AuthorizationConsentService : OAuth2AuthorizationConsentService
+
+interface JpaOAuth2AuthorizationService : OAuth2AuthorizationService
+
