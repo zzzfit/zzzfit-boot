@@ -40,6 +40,7 @@ dependencies {
     implementation(project(":jwt"))
     implementation(project(":admin"))
     implementation(project(":sport"))
+    implementation(project(":data"))
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.junit.jupiter:junit-jupiter-api")

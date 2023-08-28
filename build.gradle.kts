@@ -40,23 +40,7 @@ allprojects {
 
     configure<DependencyManagementExtension> {
         dependencies {
-//            dependency("org.springframework.boot:spring-boot-starter-parent:2.7.14")
-//            dependency("org.springframework.boot:spring-boot-starter-test:2.7.14")
-//            dependency("org.springframework.boot:spring-boot-starter-validation:2.7.14")
-//            dependency("org.springframework.boot:spring-boot-starter-quartz:2.7.14")
-//            dependency("org.springframework.boot:spring-boot-starter-data-redis:2.7.14")
-//            dependency("org.springframework.boot:spring-boot-starter-data-jpa:2.7.14")
-//            dependency("org.springframework.boot:spring-boot-autoconfigure:2.7.14")
-//            dependency("org.springframework.boot:spring-boot-starter-oauth2-resource-server:2.7.14")
-//            dependency("org.springframework.boot:spring-boot-autoconfigure:2.7.14")
-//            dependency("org.springframework.data:spring-data-commons:2.7.14")
-//            dependency("org.springframework.data:spring-data-redis:2.7.14")
-//            dependency("org.springframework.data:spring-data-commons:2.7.14")
-
             dependency("org.springframework.security:spring-security-oauth2-authorization-server:1.1.2")
-
-//            dependency("org.springframework.session:spring-session-data-redis:2.7.3")
-
             dependency("org.projectlombok:lombok:1.18.20")
 
             dependency("com.fasterxml.jackson.core:jackson-annotations:2.14.0")

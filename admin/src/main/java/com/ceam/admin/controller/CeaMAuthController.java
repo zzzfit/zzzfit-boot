@@ -59,6 +59,7 @@ public class CeaMAuthController {
     private final JwtTokenUtil tokenUtil;
     private final SecurityProperties properties;
     private final OnlineUserService onlineUserService;
+
     @Autowired
     private ICeamSysUserService ceamSysUserService;
 

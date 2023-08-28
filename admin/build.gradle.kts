@@ -16,6 +16,8 @@ dependencies {
 //    implementation("com.sonsure:easy-captcha")
     implementation("org.springframework.security:spring-security-core")
     implementation("org.springframework.security:spring-security-config")
+    implementation("org.springframework.security:spring-security-oauth2-authorization-server")
+
     implementation("org.apache.commons:commons-lang3")
 
     implementation(project(":service"))
