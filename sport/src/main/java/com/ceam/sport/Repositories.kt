@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.geo.Distance
 import org.springframework.data.geo.Point
+import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.querydsl.QuerydslPredicateExecutor
 import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer
 import org.springframework.data.repository.CrudRepository
@@ -18,9 +19,9 @@ import java.util.*
 
 
 @RepositoryRestResource(excerptProjection = CustomerExcerpt::class)
-interface CustomerRepository : CrudRepository<Customer, Long>
+interface CustomerRepository : JpaRepository<Customer, Long>
 
-interface OrderRepository : CrudRepository<Order, Long>
+interface OrderRepository : JpaRepository<Order, Long>
 
 @Projection(name = "excerpt", types = [Customer::class])
 interface CustomerExcerpt {
@@ -32,7 +33,7 @@ interface CustomerExcerpt {
 }
 
 
-interface StoreRepository : PagingAndSortingRepository<Store, Long>,
+interface StoreRepository : JpaRepository<Store, Long>,
     QuerydslPredicateExecutor<Store?> {
     @RestResource(rel = "by-location")
     fun findByAddressLocationNear(location: Point, distance: Distance, pageable: Pageable): Page<Store>
@@ -50,7 +51,7 @@ interface StoreRepository : PagingAndSortingRepository<Store, Long>,
 }
 
 
-interface UserRepository : CrudRepository<User, Long> {
+interface UserRepository : JpaRepository<User, Long> {
     /**
      * Looks up a unique [User] by its user name.
      *
