@@ -62,13 +62,18 @@ abstract class Managed : Audited<Long>() {
 class Organization : Managed()
 
 @Entity
+@Table(
+    uniqueConstraints = [UniqueConstraint(columnNames = ["name"])]
+)
 class Tenant : Managed()
 
 @Entity
-@Table(indexes = [
-    Index(name = "username", columnList = "username"),
-    Index(name = "mobile", columnList = "mobile")
-])
+@Table(
+    indexes = [
+        Index(name = "username", columnList = "username"),
+        Index(name = "mobile", columnList = "mobile")
+    ]
+)
 class User : Managed() {
     var nickname: String? = null
     var password: String? = null
@@ -86,10 +91,10 @@ class Dian : Managed() {
 }
 
 @Entity
-class Franchisee: Managed()
+class Franchisee : Managed()
 
 @Entity
-class Alliance: Managed() {
+class Alliance : Managed() {
 
     @OneToMany
     var dians: Collection<Dian>? = null

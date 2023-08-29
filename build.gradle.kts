@@ -3,16 +3,19 @@ import java.net.URI
 
 buildscript {
     val kotlinVersion = "1.9.10"
-    val springBootVersion = "3.1.3"//""2.7.14"
+    val springBootVersion = "3.1.3"
+    val hibernateVersion = "6.2.7.Final"
 
     repositories {
-        maven { url = java.net.URI("https://plugins.gradle.org/m2/") }
+        gradlePluginPortal()
         maven { url = java.net.URI("https://maven.aliyun.com/repository/central") }
     }
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+        classpath("org.hibernate.orm:hibernate-gradle-plugin:$hibernateVersion")
         classpath("io.spring.gradle:dependency-management-plugin:1.1.3")
+        classpath("org.graalvm.buildtools:native-gradle-plugin:0.9.25")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
@@ -34,9 +37,17 @@ allprojects {
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "org.graalvm.buildtools.native")
+    apply(plugin = "org.hibernate.orm")
 //    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
 //    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
 //    apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
+
+//    configurations {
+//         compileOnly {
+//            extendsFrom(configurations.annotationProcessor.get())
+//        }
+//    }
 
     configure<DependencyManagementExtension> {
         dependencies {
@@ -48,7 +59,6 @@ allprojects {
             dependency("com.fasterxml.jackson.core:jackson-databind:2.14.0")
             dependency("commons-codec:commons-codec:1.16.0")
             dependency("cn.hutool:hutool-all:5.8.21")
-//            dependency("com.alibaba.fastjson2:fastjson2:2.0.39")
             dependency("eu.bitwalker:UserAgentUtils:1.21")
             dependency("javax.servlet:javax.servlet-api:4.0.1")
             dependency("javax.validation:validation-api:2.0.1.Final")
@@ -90,7 +100,7 @@ allprojects {
             dependency("com.mysql:mysql-connector-j:8.1.0")
             dependency("ch.qos.logback:logback-classic:1.4.11")
             dependency("io.rest-assured:rest-assured:4.5.1")
-            dependency("javax.persistence:javax.persistence-api:2.2")
+//            dependency("javax.persistence:javax.persistence-api:2.2")
             dependency("org.freemarker:freemarker:2.3.29")
 
             dependency("com.alibaba:druid-spring-boot-starter:1.2.6")
@@ -156,7 +166,9 @@ allprojects {
 //            dependency("com.google.code.gson:gson:2.8.8")
 //            dependency("org.dom4j:dom4j:2.1.3")
         }
+
     }
+
 
     tasks.withType<Test> {
         useJUnitPlatform()

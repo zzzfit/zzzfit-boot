@@ -44,12 +44,15 @@ class Oauth2Authorization {
     @Column(name="authorized_scopes", length = 1000)
     var authorizedScopes :String? = null
 
+    @Lob
     @Column(length = 1000)
     var attributes: ByteArray? = null
 
+    @Lob
     @Column(length = 500)
     var state: ByteArray? = null
 
+    @Lob
     @Column(name="authorization_code_value")
     var authorizationCodeValue: ByteArray? = null
 
@@ -59,6 +62,7 @@ class Oauth2Authorization {
     @Column(name="authorization_code_expires_at")
     var authorizationCodeExpiresAt: Timestamp? = null
 
+    @Lob
     @Column(name="authorization_code_metadata")
     var authorizationCodeMetadata: ByteArray? = null
 
@@ -71,6 +75,7 @@ class Oauth2Authorization {
     @Column(name="access_token_expires_at")
     var accessTokenIssuedAt: Timestamp? = null
 
+    @Lob
     @Column(name="access_token_metadata")
     var accessTokenMetadata: ByteArray? = null
 
@@ -80,6 +85,7 @@ class Oauth2Authorization {
     @Column(name="access_token_scopes", length = 100)
     var accessTokenScopes: String? = null
 
+    @Lob
     @Column(name="oidc_id_token_value")
     var oidcIdTokenValue: ByteArray? = null
 
@@ -89,6 +95,7 @@ class Oauth2Authorization {
     @Column(name="oidc_id_token_expires_at")
     var oidcIdTokenIssuedAt: Timestamp? = null
 
+    @Lob
     @Column(name="oidc_id_token_metadata")
     var oidcIdTokenMetadata: ByteArray? = null
 
@@ -101,9 +108,11 @@ class Oauth2Authorization {
     @Column(name="refresh_token_expires_at")
     var refreshTokenIssuedAt: Timestamp? = null
 
+    @Lob
     @Column(name="refresh_token_metadata")
     var refreshTokenMetadata: ByteArray? = null
 
+    @Lob
     @Column(name="user_code_value")
     var userCodeValue: ByteArray? = null
 
@@ -113,9 +122,11 @@ class Oauth2Authorization {
     @Column(name="user_code_expires_at")
     var userCodeIssuedAt: Timestamp? = null
 
+    @Lob
     @Column(name="user_code_metadata")
     var userCodeMetadata: ByteArray? = null
 
+    @Lob
     @Column(name="device_code_value")
     var deviceCodeValue: ByteArray? = null
 
@@ -125,6 +136,7 @@ class Oauth2Authorization {
     @Column(name="device_code_expires_at")
     var deviceCodeIssuedAt: Timestamp? = null
 
+    @Lob
     @Column(name="device_code_metadata")
     var deviceCodeMetadata: ByteArray? = null
 }
@@ -173,3 +185,5 @@ class Oauth2RegisteredClient  {
     @Column(name="token_settings", length = 2000)
     var tokenSettings: String? =null
 }
+
+

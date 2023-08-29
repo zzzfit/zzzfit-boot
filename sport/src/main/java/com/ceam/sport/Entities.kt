@@ -1,9 +1,6 @@
 package com.ceam.sport
 
 import jakarta.persistence.*
-import lombok.EqualsAndHashCode
-import lombok.RequiredArgsConstructor
-import lombok.ToString
 import org.hibernate.annotations.Comment
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.math.BigDecimal
@@ -595,6 +592,17 @@ class User {
     val id: Long? = null
 
     var username: String? = null
+
+    @OneToOne
+    @MapsId
+    var info: UserInfo? = null
+}
+
+@Entity
+class UserInfo {
+    @Id
+    @GeneratedValue
+    val id: Long? = null
 }
 
 @Entity

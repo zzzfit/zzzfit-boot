@@ -1220,5 +1220,5 @@ abstract class Managed<T: Serializable> : Audited<T>() {
 
 @Entity
 @Table(name = "organization")
-@org.hibernate.annotations.Table(comment = "表示组织", appliesTo = "organization")
+@Comment("表示组织")
 class Organization  : Managed<Long>()
