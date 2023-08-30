@@ -23,7 +23,6 @@ class Oauth2AuthorizationConsent  {
     var authorities: String? =null
 }
 
-
 @Entity
 class Oauth2Authorization {
 
@@ -186,4 +185,129 @@ class Oauth2RegisteredClient  {
     var tokenSettings: String? =null
 }
 
+@Entity
+class Invoice {
+     @Id
+    @GeneratedValue
+    var id: Long? =null
+}
 
+@Entity
+class Course {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Payment {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Order {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Coupon {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Campaign {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Lead {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Contract {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Staff {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Member {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Device {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+@Embeddable
+class Address {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+
+    var province: String? = null
+
+    var city:String? =null
+
+    var district: String? = null
+
+    var street: String? =null
+
+    @Column(name = "postal_code")
+    var postalCode: String? = null
+
+    var longitude: Double?=null
+
+    var latitude: Double?=null
+}
+
+@Entity
+class MemberCard {
+    enum class Type {
+        OneShot,
+        Period,
+        PrePaid,
+    }
+    enum class Period {
+        OneWeek,
+        OneMonth,
+        TweMonth,
+        OneSeason,
+        HalfYear,
+        OneYear,
+        TwoYear,
+        ThreeYear,
+        FiveYear,
+        TenYear
+    }
+
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+
+
+}

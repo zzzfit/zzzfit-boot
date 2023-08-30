@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.io.Serializable
 import java.sql.Date
+import java.sql.Timestamp
 
 
 @MappedSuperclass
@@ -88,6 +89,17 @@ class Dian : Managed() {
     @Column(nullable = false)
     @ManyToOne
     var alliance: Alliance? = null
+
+    @Column(name = "shop_area")
+    var shopArea: Float? = null
+
+    @Column(name = "business_hour")
+    @Embedded
+    @AttributeOverrides(
+        AttributeOverride(name = "start", column = Column(name = "business_hour_start")),
+        AttributeOverride(name = "endDate", column = Column(name = "business_hour_end"))
+    )
+    var businessHour: BusinessHour? = null
 }
 
 @Entity
@@ -98,4 +110,15 @@ class Alliance : Managed() {
 
     @OneToMany
     var dians: Collection<Dian>? = null
+}
+
+@Entity
+@Embeddable
+class BusinessHour : Managed() {
+
+    @Temporal(TemporalType.TIME)
+    var start: Timestamp? = null
+
+    @Temporal(TemporalType.TIME)
+    var end: Timestamp? = null
 }
