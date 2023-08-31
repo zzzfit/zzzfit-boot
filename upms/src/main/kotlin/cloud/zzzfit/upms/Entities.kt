@@ -2,6 +2,9 @@ package cloud.zzzfit.upms
 
 import jakarta.persistence.*
 import java.io.Serializable
+import java.math.BigDecimal
+import java.sql.Date
+import java.sql.Time
 import java.sql.Timestamp
 import java.time.LocalDateTime
 
@@ -190,6 +193,15 @@ class Invoice {
      @Id
     @GeneratedValue
     var id: Long? =null
+
+    @Column(nullable = false, length = 16)
+    var number: String? = null
+
+    @Column(name="paid_amount", nullable = false, precision = 12, scale = 2)
+    var paidAmount: BigDecimal? = null
+
+    @Column(name="download_link")
+    var downloadLink: String? = null
 }
 
 @Entity
@@ -197,6 +209,8 @@ class Course {
     @Id
     @GeneratedValue
     var id: Long? =null
+
+    var tags: String? = null
 }
 
 @Entity
@@ -305,9 +319,73 @@ class MemberCard {
         TenYear
     }
 
+    enum class Status {
+        Activated,
+        Expired,
+        Cancelled,
+    }
+
     @Id
     @GeneratedValue
     var id: Long? =null
 
+    @Temporal(TemporalType.DATE)
+    var startDate: Date? = null
+
+    @Temporal(TemporalType.DATE)
+    var endDate: Date? = null
+
+    @Column(precision = 12, scale = 2)
+    var paidAmount: BigDecimal? = null
+}
+
+@Entity
+class Voucher {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+}
+
+@Entity
+class Class {
+
+    enum class Type {
+        OneVsOne,
+        OneVsTwo,
+        OneVsThree
+    }
+
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+
+    @OneToMany
+    var teachers: Set<Staff> = HashSet()
+
+    @OneToMany
+    var attendants: Set<Member> = HashSet()
+}
+
+@Entity
+class Attendance {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+
+    @OneToOne
+    var `class`: Class?=null
+
+    @Temporal(TemporalType.TIMESTAMP)
+    var checkInTime: Timestamp? = null
+}
+
+@Entity
+class Appointment {
+    @Id
+    @GeneratedValue
+    var id: Long? =null
+
+    @OneToOne
+    var `class`: Class?=null
 
 }
