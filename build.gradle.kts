@@ -34,20 +34,15 @@ allprojects {
         google()
     }
 
+    apply(plugin = "java" )
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "org.graalvm.buildtools.native")
+//    apply(plugin = "org.graalvm.buildtools.native")
     apply(plugin = "org.hibernate.orm")
 //    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
 //    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
 //    apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
-
-//    configurations {
-//         compileOnly {
-//            extendsFrom(configurations.annotationProcessor.get())
-//        }
-//    }
 
     configure<DependencyManagementExtension> {
         dependencies {
@@ -166,7 +161,6 @@ allprojects {
 //            dependency("com.google.code.gson:gson:2.8.8")
 //            dependency("org.dom4j:dom4j:2.1.3")
         }
-
     }
 
 

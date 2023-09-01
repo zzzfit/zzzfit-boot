@@ -123,28 +123,28 @@ class MultiTenantConnectionProviderImpl(@Qualifier("dataSource") private val dat
     }
 }
 
-
-@Configuration
-open class HibernateConfig(private val jpaProperties: JpaProperties) {
-    @Bean
-    open fun jpaVendorAdapter(): JpaVendorAdapter {
-        return HibernateJpaVendorAdapter()
-    }
-
-    @Bean
-    fun entityManagerFactory(
-        @Qualifier("dataSource") dataSource: DataSource,
-        provider: MultiTenantConnectionProvider,
-        resolver: CurrentTenantIdentifierResolver
-    ): LocalContainerEntityManagerFactoryBean {
-        val properties = HashMap<String, Any>(jpaProperties.properties)
-        properties[Environment.MULTI_TENANT_CONNECTION_PROVIDER] = provider
-        properties[Environment.MULTI_TENANT_IDENTIFIER_RESOLVER] = resolver
-        val em = LocalContainerEntityManagerFactoryBean()
-        em.setDataSource(dataSource)
-//        em.setPackagesToScan("com.你的包.erp")
-        em.jpaVendorAdapter = jpaVendorAdapter()
-        em.jpaPropertyMap = properties
-        return em
-    }
-}
+//
+//@Configuration
+//open class HibernateConfig(private val jpaProperties: JpaProperties) {
+//    @Bean
+//    open fun jpaVendorAdapter(): JpaVendorAdapter {
+//        return HibernateJpaVendorAdapter()
+//    }
+//
+//    @Bean
+//    fun entityManagerFactory(
+//        @Qualifier("dataSource") dataSource: DataSource,
+//        provider: MultiTenantConnectionProvider,
+//        resolver: CurrentTenantIdentifierResolver
+//    ): LocalContainerEntityManagerFactoryBean {
+//        val properties = HashMap<String, Any>(jpaProperties.properties)
+//        properties[Environment.MULTI_TENANT_CONNECTION_PROVIDER] = provider
+//        properties[Environment.MULTI_TENANT_IDENTIFIER_RESOLVER] = resolver
+//        val em = LocalContainerEntityManagerFactoryBean()
+//        em.setDataSource(dataSource)
+////        em.setPackagesToScan("com.你的包.erp")
+//        em.jpaVendorAdapter = jpaVendorAdapter()
+//        em.jpaPropertyMap = properties
+//        return em
+//    }
+//}

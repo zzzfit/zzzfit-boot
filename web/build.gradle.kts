@@ -4,6 +4,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     implementation("jakarta.servlet:jakarta.servlet-api")
+    runtimeOnly("org.jetbrains.kotlin:kotlin-reflect")
 
     implementation("org.springframework.security:spring-security-core")
     implementation("org.springframework.security:spring-security-web")
@@ -24,6 +25,12 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("org.springframework.security:spring-security-oauth2-authorization-server")
 
+
+    implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
+//    annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jakarta")
+//    annotationProcessor group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: '3.1.0'
+
+
     implementation("com.h2database:h2")
 
     implementation("com.alibaba:druid-spring-boot-starter")
@@ -34,12 +41,7 @@ dependencies {
     implementation("org.hibernate:hibernate-core")
     implementation("org.hibernate:hibernate-validator")
 
-    implementation(project(":core"))
-    implementation(project(":service"))
-    implementation(project(":common"))
-    implementation(project(":jwt"))
-    implementation(project(":admin"))
-    implementation(project(":sport"))
+    implementation(project(":upms"))
     implementation(project(":data"))
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -10,8 +10,9 @@ import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.io.Serializable
 import java.math.BigDecimal
-import java.sql.Date
+//import java.sql.Date
 import java.sql.Timestamp
+import javax.annotation.processing.Generated
 
 
 @MappedSuperclass
@@ -19,14 +20,14 @@ import java.sql.Timestamp
 abstract class Audited<T : Serializable> {
 
     @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, updatable = false)
-    var createdAt: Date? = null
+    var createdAt: Timestamp? = null
 
     @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    val updatedAt: Date? = null
+    val updatedAt: Timestamp? = null
 
     @CreatedBy
     @Column(nullable = false, updatable = false)
@@ -62,7 +63,7 @@ abstract class Managed<T: Serializable> : ManagedWithoutTenantId<T>() {
 class Role: Managed<Long>() {
 
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     val id: Long? = null
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -75,14 +76,14 @@ class Role: Managed<Long>() {
 class Authority: Managed<Long>() {
 
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     val id: Long? = null
 }
 @Entity
 class Organization : Managed<Long>() {
 
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     val id: Long? = null
 }
 
@@ -92,17 +93,17 @@ class Organization : Managed<Long>() {
 )
 class Tenant : ManagedWithoutTenantId<Long>() {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     val id: Long? = null
 }
 
 @Entity
-@Table(
-    indexes = [
-        Index(name = "username", columnList = "username"),
-        Index(name = "mobile", columnList = "mobile")
-    ]
-)
+//@Table(
+//    indexes = [
+////        Index(name = "username", columnList = "username"),
+//        Index(name = "mobile", columnList = "mobile")
+//    ]
+//)
 class User : Managed<Long>() {
 
     @Id
@@ -138,29 +139,29 @@ class UserDetail {
 class Dian : Managed<Long>() {
 
     @Id
-    @GeneratedValue
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long? = null
 
-    @Column(nullable = false)
-    @ManyToOne
-    var alliance: Alliance? = null
+//    @Column(nullable = false)
+//    @ManyToOne
+//    var alliance: Alliance? = null
 
     @Column(name = "shop_area")
     var shopArea: Float? = null
 
-    @Column(name = "business_hour")
-    @Embedded
-    @AttributeOverrides(
-        AttributeOverride(name = "start", column = Column(name = "business_hour_start")),
-        AttributeOverride(name = "endDate", column = Column(name = "business_hour_end"))
-    )
-    var businessHour: BusinessHour? = null
+//    @Column(name = "business_hour")
+//    @Embedded
+//    @AttributeOverrides(
+//        AttributeOverride(name = "start", column = Column(name = "business_hour_start")),
+//        AttributeOverride(name = "endDate", column = Column(name = "business_hour_end"))
+//    )
+//    var businessHour: BusinessHour? = null
 }
 
 @Entity
 class Franchisee : Managed<Long>() {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     val id: Long? = null
 }
 
@@ -168,7 +169,7 @@ class Franchisee : Managed<Long>() {
 class Alliance : Managed<Long>() {
 
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     val id: Long? = null
 
     @OneToMany
@@ -178,19 +179,22 @@ class Alliance : Managed<Long>() {
 @Entity
 @Embeddable
 class BusinessHour : Managed<Long>() {
+    @Id
+//    @GeneratedValue
+    val id: Long? = null
 
-    @Temporal(TemporalType.TIME)
-    var start: Timestamp? = null
+//    @Temporal(TemporalType.TIME)
+    var start: java.sql.Time? = null
 
-    @Temporal(TemporalType.TIME)
-    var end: Timestamp? = null
+//    @Temporal(TemporalType.TIME)
+    var end: java.sql.Time? = null
 }
 
 
 @Entity
 class Invoice {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 
     @Column(nullable = false, length = 16)
@@ -206,7 +210,7 @@ class Invoice {
 @Entity
 class Course {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 
     var tags: String? = null
@@ -215,63 +219,63 @@ class Course {
 @Entity
 class Payment {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 }
 
 @Entity
 class Order {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 }
 
 @Entity
 class Coupon {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 }
 
 @Entity
 class Campaign {
     @Id
-    @GeneratedValue
+//    @Generated
     var id: Long? =null
 }
 
 @Entity
 class Lead {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 }
 
 @Entity
 class Contract {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 }
 
 @Entity
 class Staff {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 }
 
 @Entity
 class Member {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 }
 
 @Entity
 class Device {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 }
 
@@ -279,7 +283,7 @@ class Device {
 @Embeddable
 class Address {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 
     var province: String? = null
@@ -325,14 +329,14 @@ class MemberCard {
     }
 
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 
     @Temporal(TemporalType.DATE)
-    var startDate: Date? = null
+    var startDate: Timestamp? = null
 
     @Temporal(TemporalType.DATE)
-    var endDate: Date? = null
+    var endDate: Timestamp? = null
 
     @Column(precision = 12, scale = 2)
     var paidAmount: BigDecimal? = null
@@ -341,7 +345,8 @@ class MemberCard {
 @Entity
 class Voucher {
     @Id
-    @GeneratedValue
+//    @Column(name = "id")
+//    @GeneratedValue
     var id: Long? =null
 }
 
@@ -355,7 +360,7 @@ class Class {
     }
 
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 
     @OneToMany
@@ -365,23 +370,24 @@ class Class {
     var attendants: Set<Member> = HashSet()
 }
 
+
 @Entity
 class Attendance {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 
     @OneToOne
     var `class`: Class?=null
 
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIME)
     var checkInTime: Timestamp? = null
 }
 
 @Entity
 class Appointment {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: Long? =null
 
     @OneToOne

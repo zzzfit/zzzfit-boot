@@ -29,7 +29,7 @@ class Oauth2Authorization {
 
     @Column(length = 100)
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: String? =null
 
     @Column(name="registered_client_id", length = 100, nullable = false)
@@ -145,7 +145,7 @@ class Oauth2Authorization {
 class Oauth2RegisteredClient  {
     @Column(length = 100)
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     var id: String? =null
 
     @Column(name="client_id", length = 100)
@@ -184,30 +184,4 @@ class Oauth2RegisteredClient  {
 
     @Column(name="token_settings", length = 2000)
     var tokenSettings: String? =null
-}
-
-
-@Entity
-class User1 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private var id: Long? = null
-
-    //...
-    @OneToOne(cascade = [CascadeType.ALL])
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private val address: Address1? = null // ... getters and setters
-}
-
-@Entity
-class Address1 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private var id: Long? = null
-
-    //...
-    @OneToOne(mappedBy = "address")
-    private val user: User1? = null //... getters and setters
 }

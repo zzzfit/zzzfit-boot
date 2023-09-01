@@ -3,17 +3,17 @@ server:
 
 spring:
   datasource:
-#    url: jdbc:h2:mem:data
-#    driver-class-name: org.h2.Driver
-#    username: sa
-#    password:
+    url: jdbc:h2:mem:data
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
 
-    username: root
-    password: fitness
-    url: jdbc:mysql://localhost:3306/ceam_mall
-    # 使用druid数据源
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: fitness
+#    url: jdbc:mysql://localhost:3306/ceam_mall
+#    # 使用druid数据源
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 #    druid:
 #      filters: stat
 #      maxActive: 20 #最大连接数
@@ -31,60 +31,24 @@ spring:
   redis:
     host: localhost
 
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#    defer-datasource-initialization: true
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.H2Dialect
-#        use_sql_comments: true
-#      javax:
-#        persistence:
-#          schema-generation:
-#            create-source: metadata
-#            scripts:
-#              action: drop-and-create
-#              create-target: create.sql
-#              drop-target: create.sql
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        use_sql_comments: true
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: drop-and-create
+              create-target: create.sql
+              drop-target: create.sql
 
-jwt:
-#  token-header: Authorization
-  # 令牌前缀
-#  token-start-with: Bearer
-  secret: k09BQnaF
-  # 必须使用最少88位的Base64对该令牌进行编码
-  base64-secret: ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
-  # 令牌过期时间 此处单位/毫秒 ，默认1小时
-#  validity: 36000000
-  # 在线用户key
-  online-key: online-token
-  # 验证码
-  code-key: code-key
-
-#登录图形验证码有效时间/分钟
-#loginCode:
-#  expiration: 2
-
-# 是否限制单用户登录
-#single:
-#  login: false
-
-# 密码加密传输，前端公钥加密，后端私钥解密
-rsa:
-  private_key: MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAnvwlQrBRPSNNthuG
-    zvpR1e4S3saWY0Q28K33wkvyTSITcpRlm0JUwhVgB2tQJB80XfpLFz7jzPnGZQT4
-    LeDBiwIDAQABAkBSLxm7zZVRO2yylKwtVmzzX6xViOa4zcxwwh1vTP8mK4ShcTX8
-    bPkyHzkby7TJRwWl2qDoWh4ra2t8oHAEmP3RAiEA0ANvMrELeFVwarisp2F5gTHi
-    NmCngEy5n0Rw4FCBKQ8CIQDDqUGV5J1/I2sgW2NjGMsJiWZkGD6BPzjkSCj/TFdH
-    xQIgHlSh3i5akc1Deww6gJ2B7gisB2nIgritSD/ehZa3fpkCIF/vr67VZ7wdG7vD
-    05mVYIiOjFvr30n0O+sCzsdPIUSZAiEAtn5gIvpKIrc/EF6gREczWPTsIgrrl/jo
-    JhQECWxlzU0=
-
-file:
-  path: ${java.io.tmpdir}/file # D:\bmall\file\
-  avatar: ${java.io.tmpdir}/avatar # D:\bmall\avatar\
 
 logging:
   level:
