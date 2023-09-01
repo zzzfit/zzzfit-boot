@@ -1,7 +1,6 @@
 package cloud.zzzfit.data.entity
 
 import jakarta.persistence.*
-import org.hibernate.annotations.Comment
 import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
 import org.springframework.data.annotation.CreatedBy
@@ -18,14 +17,6 @@ import java.sql.Timestamp
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
 abstract class Audited<T : Serializable> {
-    companion object {
-        private const val serialVersionUID = -1L
-    }
-
-    @Id
-    @GeneratedValue
-    @Comment("id")
-    var id: T? = null
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,10 +38,7 @@ abstract class Audited<T : Serializable> {
 }
 
 @MappedSuperclass
-@Table(indexes = [Index(columnList = "tenantId")])
-abstract class Managed : Audited<Long>() {
-    @Column(nullable = false)
-    var tenantId: Long = 0
+abstract class ManagedWithoutTenantId<T: Serializable> : Audited<T>() {
 
     @Column(nullable = false, length = 63)
     var name: String? = null
@@ -62,8 +50,21 @@ abstract class Managed : Audited<Long>() {
     var deleted: Boolean = false
 }
 
+@MappedSuperclass
+@Table(indexes = [Index(columnList = "tenantId")])
+abstract class Managed<T: Serializable> : ManagedWithoutTenantId<T>() {
+
+    @Column(nullable = false)
+    var tenantId: T? = null
+}
+
 @Entity
-class Role: Managed() {
+class Role: Managed<Long>() {
+
+    @Id
+    @GeneratedValue
+    val id: Long? = null
+
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     val authorities: Set<Authority> = HashSet<Authority>()
@@ -71,17 +72,29 @@ class Role: Managed() {
 }
 
 @Entity
-class Authority: Managed() {
+class Authority: Managed<Long>() {
 
+    @Id
+    @GeneratedValue
+    val id: Long? = null
 }
 @Entity
-class Organization : Managed()
+class Organization : Managed<Long>() {
+
+    @Id
+    @GeneratedValue
+    val id: Long? = null
+}
 
 @Entity
 @Table(
     uniqueConstraints = [UniqueConstraint(columnNames = ["name"])]
 )
-class Tenant : Managed()
+class Tenant : ManagedWithoutTenantId<Long>() {
+    @Id
+    @GeneratedValue
+    val id: Long? = null
+}
 
 @Entity
 @Table(
@@ -90,24 +103,43 @@ class Tenant : Managed()
         Index(name = "mobile", columnList = "mobile")
     ]
 )
-class User : Managed() {
+class User : Managed<Long>() {
+
+    @Id
+    @GeneratedValue
+    val id: Long? = null
+
     var nickname: String? = null
+
     var password: String? = null
 
-    @OneToOne
-    @MapsId
+    @OneToOne(mappedBy = "user", cascade = [CascadeType.ALL])
+    @PrimaryKeyJoinColumn
     var detail: UserDetail? = null
-
 
     @ManyToMany(fetch = FetchType.EAGER)
     val roles: Set<Role> = HashSet<Role>()
 }
 
 @Entity
-class UserDetail : Managed()
+class UserDetail {
+
+    @Id
+    @Column(name = "user_id")
+    var id: Long? = null
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    @JoinColumn(name = "user_id")
+    val user: User? = null
+}
 
 @Entity
-class Dian : Managed() {
+class Dian : Managed<Long>() {
+
+    @Id
+    @GeneratedValue
+    val id: Long? = null
 
     @Column(nullable = false)
     @ManyToOne
@@ -126,10 +158,18 @@ class Dian : Managed() {
 }
 
 @Entity
-class Franchisee : Managed()
+class Franchisee : Managed<Long>() {
+    @Id
+    @GeneratedValue
+    val id: Long? = null
+}
 
 @Entity
-class Alliance : Managed() {
+class Alliance : Managed<Long>() {
+
+    @Id
+    @GeneratedValue
+    val id: Long? = null
 
     @OneToMany
     var dians: Collection<Dian>? = null
@@ -137,7 +177,7 @@ class Alliance : Managed() {
 
 @Entity
 @Embeddable
-class BusinessHour : Managed() {
+class BusinessHour : Managed<Long>() {
 
     @Temporal(TemporalType.TIME)
     var start: Timestamp? = null

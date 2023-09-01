@@ -1,18 +1,10 @@
 package cloud.zzzfit.upms
 
 import jakarta.persistence.*
-import org.hibernate.annotations.Comment
-import org.springframework.data.annotation.CreatedBy
-import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.LastModifiedBy
-import org.springframework.data.annotation.LastModifiedDate
-import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.io.Serializable
-import java.math.BigDecimal
-import java.sql.Date
-import java.sql.Time
 import java.sql.Timestamp
 import java.time.LocalDateTime
+
 
 @Entity
 class Oauth2AuthorizationConsent  {
@@ -192,4 +184,30 @@ class Oauth2RegisteredClient  {
 
     @Column(name="token_settings", length = 2000)
     var tokenSettings: String? =null
+}
+
+
+@Entity
+class User1 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private var id: Long? = null
+
+    //...
+    @OneToOne(cascade = [CascadeType.ALL])
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private val address: Address1? = null // ... getters and setters
+}
+
+@Entity
+class Address1 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private var id: Long? = null
+
+    //...
+    @OneToOne(mappedBy = "address")
+    private val user: User1? = null //... getters and setters
 }

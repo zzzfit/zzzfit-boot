@@ -1,5 +1,6 @@
 package com.ceam.core.entities
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.Comment
 import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.annotation.CreatedDate
@@ -715,6 +716,7 @@ class SysUser {
     var username: String? = null
 
     @Column(name = "password", nullable = false)
+    @JsonIgnore
     var password: String? = null
 
     @Column(name = "sex", length = 2)
