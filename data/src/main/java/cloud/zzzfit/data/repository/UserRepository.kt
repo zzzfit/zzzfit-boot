@@ -6,12 +6,14 @@ import cloud.zzzfit.data.entity.Tenant
 import cloud.zzzfit.data.entity.User
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import org.springframework.data.querydsl.QuerydslPredicateExecutor
+//import org.springframework.data.querydsl.QuerydslPredicateExecutor
 import org.springframework.data.repository.PagingAndSortingRepository
 
-interface UserRepository : PagingAndSortingRepository<User, Long>,
-    QuerydslPredicateExecutor<User> {
-    fun findByUsername(username: String, pageable: Pageable): Page<User>
+interface UserRepository : PagingAndSortingRepository<User, Long>
+    //,
+//    QuerydslPredicateExecutor<User>
+{
+//    fun findByUsername(username: String, pageable: Pageable): Page<User>
 
     /**
      * Tweak the Querydsl binding if collection resources are filtered.
@@ -25,11 +27,14 @@ interface UserRepository : PagingAndSortingRepository<User, Long>,
 //    }
 }
 
-interface DianRepository : PagingAndSortingRepository<Dian, Long>,
-    QuerydslPredicateExecutor<Dian> {}
+interface DianRepository : PagingAndSortingRepository<Dian, Long>
+//    ,
+//    QuerydslPredicateExecutor<Dian> {}
 
-interface TenantRepository : PagingAndSortingRepository<Tenant, Long>,
-    QuerydslPredicateExecutor<Tenant> {}
+interface TenantRepository : PagingAndSortingRepository<Tenant, Long>
+//    ,
+//    QuerydslPredicateExecutor<Tenant> {}
 
-interface AllianceRepository : PagingAndSortingRepository<Alliance, Long>,
-    QuerydslPredicateExecutor<Alliance> {}
+interface AllianceRepository : PagingAndSortingRepository<Alliance, Long>
+//    ,
+//    QuerydslPredicateExecutor<Alliance> {}

@@ -29,7 +29,7 @@ class Oauth2Authorization {
 
     @Column(length = 100)
     @Id
-//    @GeneratedValue
+    @GeneratedValue
     var id: String? =null
 
     @Column(name="registered_client_id", length = 100, nullable = false)
@@ -145,7 +145,7 @@ class Oauth2Authorization {
 class Oauth2RegisteredClient  {
     @Column(length = 100)
     @Id
-//    @GeneratedValue
+    @GeneratedValue
     var id: String? =null
 
     @Column(name="client_id", length = 100)
@@ -180,7 +180,6 @@ class Oauth2RegisteredClient  {
 
     @Column(name="client_settings", length = 2000)
     var clientSettings: String? =null
-
 
     @Column(name="token_settings", length = 2000)
     var tokenSettings: String? =null

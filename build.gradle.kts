@@ -1,10 +1,20 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
+import org.jetbrains.kotlin.gradle.tasks.Kapt
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
+
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URI
 
+val kotlinVersion: String by extra
+val springBootVersion: String by extra
+val hibernateVersion: String by extra
+val queryDslVersion: String by extra
+
 buildscript {
-    val kotlinVersion = "1.9.10"
-    val springBootVersion = "3.1.3"
-    val hibernateVersion = "6.2.7.Final"
+    val kotlinVersion by extra { "1.9.10" }
+    val springBootVersion by extra { "3.1.3" }
+    val hibernateVersion by extra { "6.2.7.Final" }
+    val queryDslVersion by extra { "5.0.0" }
 
     repositories {
         gradlePluginPortal()
@@ -16,13 +26,27 @@ buildscript {
         classpath("org.hibernate.orm:hibernate-gradle-plugin:$hibernateVersion")
         classpath("io.spring.gradle:dependency-management-plugin:1.1.3")
         classpath("org.graalvm.buildtools:native-gradle-plugin:0.9.25")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
+        classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
 
+
 allprojects {
-    group = "cloud.zzzfit.boot"
+    group = "cloud.zzzfit"
     version = "0.0.1-SNAPSHOT"
+
+    apply(plugin = "java")
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "org.graalvm.buildtools.native")
+    apply(plugin = "org.hibernate.orm")
+    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+    apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
+    apply(plugin = "org.jetbrains.kotlin.kapt")
 
     repositories {
         maven { url = URI("https://plugins.gradle.org/m2/") }
@@ -33,16 +57,6 @@ allprojects {
         mavenCentral()
         google()
     }
-
-    apply(plugin = "java" )
-    apply(plugin = "org.springframework.boot")
-    apply(plugin = "io.spring.dependency-management")
-    apply(plugin = "org.jetbrains.kotlin.jvm")
-//    apply(plugin = "org.graalvm.buildtools.native")
-    apply(plugin = "org.hibernate.orm")
-//    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
-//    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
-//    apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
 
     configure<DependencyManagementExtension> {
         dependencies {
@@ -55,29 +69,18 @@ allprojects {
             dependency("commons-codec:commons-codec:1.16.0")
             dependency("cn.hutool:hutool-all:5.8.21")
             dependency("eu.bitwalker:UserAgentUtils:1.21")
-            dependency("javax.servlet:javax.servlet-api:4.0.1")
-            dependency("javax.validation:validation-api:2.0.1.Final")
+            dependency("jakarta.servlet:javax.servlet-api:3.1.0")
 
             dependency("com.alibaba:fastjson:2.0.39")
-
-//            dependency("com.github.whvcse:easy-captcha:1.6.2")
-//            dependency("com.sonsure:easy-captcha:1.6.2")
-
             dependency("com.google.code.gson:gson:2.10")
-            dependency("io.jsonwebtoken:jjwt:0.9.1")
 
             dependency("io.micrometer:micrometer-core:1.11.3")
             dependency("org.apache.commons:commons-lang3:3.13.0")
             dependency("com.google.guava:guava:32.1.2-jre")
-            dependency("com.baomidou:mybatis-plus:3.2.0")
-            dependency("com.baomidou:mybatis-plus-generator:3.2.0")
-            dependency("com.baomidou:mybatis-plus-annotation:3.2.0")
-            dependency("com.baomidou:mybatis-plus-core:3.5.3")
-            dependency("com.baomidou:mybatis-plus-extension:3.5.3")
-
             dependency("org.springframework.security:spring-security-core:6.1.3")
             dependency("org.springframework.security:spring-security-config:6.1.3")
             dependency("org.springframework.security:spring-security-web:6.1.3")
+
 
 //            dependency("org.springframework.cloud:spring-cloud-commons:3.0.4")
 //            dependency("org.springframework.cloud:spring-cloud-context:3.0.4")
@@ -85,34 +88,20 @@ allprojects {
 //            dependency("org.springframework.cloud:spring-cloud-starter-openfeign:3.0.4")
 //            dependency("org.springframework.cloud:spring-cloud-openfeign-core:3.0.4")
 //            dependency("org.springframework.cloud:spring-cloud-consul-discovery:3.0.4")
-//
-//            dependency("org.springframework.cloud:spring-cloud-starter-oauth2:2.2.5.RELEASE")
-//            dependency("org.springframework.security.oauth:spring-security-oauth-parent:2.5.1.RELEASE")
-//            dependency("org.springframework.security.oauth:spring-security-oauth-parent:2.5.1.RELEASE")
-//
-//            dependency("org.springframework.security.oauth:spring-security-oauth2:2.5.1.RELEASE")
-//
+
             dependency("com.mysql:mysql-connector-j:8.1.0")
             dependency("ch.qos.logback:logback-classic:1.4.11")
             dependency("io.rest-assured:rest-assured:4.5.1")
-//            dependency("javax.persistence:javax.persistence-api:2.2")
             dependency("org.freemarker:freemarker:2.3.29")
 
-            dependency("com.alibaba:druid-spring-boot-starter:1.2.6")
-            dependency("com.baomidou:mybatis-plus-boot-starter:3.5.3")
-            dependency("com.baomidou:mybatis-plus:3.5.3")
-            dependency("com.baomidou:mybatis-plus-core:3.5.3")
-            dependency("com.baomidou:mybatis-plus-annotation:3.5.3")
-
-            dependency("com.baomidou:mybatis-plus-extension:3.5.3")
-            dependency("com.baomidou:dynamic-datasource-spring-boot-starter:3.5.3")
-            dependency("com.baomidou:mybatis-plus-generator:3.5.3")
             dependency("com.h2database:h2:2.2.220")
-            dependency("org.hibernate:hibernate-core:6.2.7.Final")
+            dependency("org.hibernate:hibernate-core:$hibernateVersion")
             dependency("org.hibernate:hibernate-validator:8.0.1.Final")
 
+            dependency("com.querydsl:querydsl-core:$queryDslVersion")
+            dependency("com.querydsl:querydsl-jpa:$queryDslVersion")
+
 //
-//            dependency("org.jgrapht:jgrapht-core:1.4.0")
 //
 //            dependency("org.fisco-bcos.java-sdk:fisco-bcos-java-sdk:2.8.0")
 //            dependency("io.swagger:swagger-annotations:1.5.24")
@@ -171,5 +160,18 @@ allprojects {
     tasks.withType<JavaCompile> {
         sourceCompatibility = "17"
         options.encoding = "UTF-8"
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf(
+                "-Xjsr305=strict",
+                "-Xjvm-default=all-compatibility"
+            ) // needed to override default methods on interfaces
+            jvmTarget = "17"
+        }
+    }
+
+    tasks.withType<Kapt> {
     }
 }

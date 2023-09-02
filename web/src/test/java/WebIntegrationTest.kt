@@ -40,12 +40,6 @@ class WebIntegrationTest {
 //        Assertions.assertNotNull(webApplicationContext.getBean("greetController"))
     }
 
-//    @Test
-//    fun givenHomePageURI_whenMockMVC_thenReturnsIndexJSPViewName() {
-//        mockMvc.perform(get("/homePage")).andDo(print())
-//            .andExpect(view().name("index"))
-//    }
-
     @Test
     fun givenGreetURIWithPathVariable_whenMockMVC_thenResponseOK() {
         mockMvc

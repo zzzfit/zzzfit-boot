@@ -6,5 +6,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("org.springframework.security:spring-security-oauth2-authorization-server")
+    implementation("com.querydsl:querydsl-jpa")
+    annotationProcessor("com.querydsl:querydsl-apt")
     implementation(project(":data"))
 }

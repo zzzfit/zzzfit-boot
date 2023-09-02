@@ -3,33 +3,14 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:data
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-
-#    username: root
-#    password: fitness
-#    url: jdbc:mysql://localhost:3306/ceam_mall
-#    # 使用druid数据源
-#    type: com.alibaba.druid.pool.DruidDataSource
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    druid:
-#      filters: stat
-#      maxActive: 20 #最大连接数
-#      initialSize: 1 #连接池初始化大小
-#      maxWait: 60000
-#      minIdle: 1 #最小空闲连接数
-#      timeBetweenEvictionRunsMillis: 60000
-#      minEvictableIdleTimeMillis: 300000
-#      validationQuery: select 'x'
-#      testWhileIdle: true
-#      testOnBorrow: false
-#      testOnReturn: false
-#      poolPreparedStatements: true
-#      maxOpenPreparedStatements: 20
-  redis:
-    host: localhost
+#    url: jdbc:h2:mem:data
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+    url: jdbc:mysql://localhost:3306/fitness
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: fitness
 
   jpa:
     show-sql: true
@@ -38,7 +19,7 @@ spring:
     defer-datasource-initialization: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+#        dialect: org.hibernate.dialect.MySQL8Dialect
         use_sql_comments: true
       javax:
         persistence:
@@ -48,7 +29,6 @@ spring:
               action: drop-and-create
               create-target: create.sql
               drop-target: create.sql
-
 
 logging:
   level:

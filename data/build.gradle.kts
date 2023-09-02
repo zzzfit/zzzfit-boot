@@ -1,6 +1,16 @@
 dependencies {
     compileOnly("jakarta.persistence:jakarta.persistence-api")
     implementation("com.fasterxml.jackson.core:jackson-databind")
-    implementation("com.baomidou:mybatis-plus")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.data:spring-data-jpa")
+//    implementation("com.querydsl:querydsl-jpa:${property("queryDslVersion")}:jakarta")
+//    kapt("com.querydsl:querydsl-apt:${property("queryDslVersion")}:jakarta")
 }
+
+//kapt {
+//    javacOptions {
+//        option("querydsl.entityAccessors", true)
+//    }
+//    arguments {
+//        arg("plugin", "com.querydsl.apt.jpa.JPAAnnotationProcessor")
+//    }
+//}
