@@ -163,7 +163,7 @@ class UserDetail {
 }
 
 @Entity
-class Dian {//}: Managed<Long>() {
+class Dian : Managed<Long>() {
 
     enum class Status {
         OpeningSoon,
