@@ -6,12 +6,12 @@ import cloud.zzzfit.data.entity.Tenant
 import cloud.zzzfit.data.entity.User
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.data.jpa.repository.JpaRepository
 //import org.springframework.data.querydsl.QuerydslPredicateExecutor
 import org.springframework.data.repository.PagingAndSortingRepository
 
-interface UserRepository : PagingAndSortingRepository<User, Long>
-    //,
-//    QuerydslPredicateExecutor<User>
+interface UserRepository : JpaRepository<User, Long>
+//    , QuerydslPredicateExecutor<User>
 {
 //    fun findByUsername(username: String, pageable: Pageable): Page<User>
 

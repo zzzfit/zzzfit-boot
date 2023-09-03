@@ -85,6 +85,12 @@ class Organization : Managed<Long>() {
 
     @Column(length = 63, unique = true, nullable = false)
     var name: String? = null
+
+    @OneToMany(mappedBy = "parent")
+    var children: List<Organization>? = null
+
+    @ManyToOne
+    var parent: Organization? = null
 }
 
 @Entity
@@ -139,6 +145,11 @@ class User : Managed<Long>() {
 
 @Embeddable
 class UserDetail {
+
+    @Id
+    @GeneratedValue
+    val id: Long? = null
+
     enum class Gender {
         MALE, FEMALE
     }
@@ -155,6 +166,14 @@ class UserDetail {
 @Entity
 class Dian : Managed<Long>() {
 
+    enum class Status {
+        OpeningSoon,
+        InBusiness,
+        InSuspension,
+        ClosedDown
+    }
+
+
     @Id
     @GeneratedValue
     val id: Long? = null
@@ -166,13 +185,19 @@ class Dian : Managed<Long>() {
     @Column(name = "shop_area")
     var shopArea: Float? = null
 
+    @Column(name = "status")
+    var status: Status? = null
     @Column(name = "business_hour_start")
+
     @Temporal(TemporalType.TIME)
     var businessHourStart: Time? = null
 
     @Column(name = "business_hour_end")
     @Temporal(TemporalType.TIME)
     var businessHourEnd: Time? = null
+
+    @Column(name = "equipment_info")
+    var equipmentInfo: String? = null
 }
 
 @Entity
@@ -343,6 +368,9 @@ class MemberCard {
 
     @Column(precision = 12, scale = 2)
     var paidAmount: BigDecimal? = null
+
+    @Column(name = "applicable_dian")
+    var applicableDians: Set<Dian>? = HashSet()
 }
 
 @Entity
@@ -394,4 +422,14 @@ class Appointment {
 
     @OneToOne
     var `class`: Class? = null
+}
+@Entity
+class Invitation : Managed<Long>() {
+    @Id
+    @GeneratedValue
+    var id: Long? = null
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIME)
+    var `when`: Time? = null
 }
