@@ -41,10 +41,11 @@ allprojects {
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "org.graalvm.buildtools.native")
+//    apply(plugin = "org.graalvm.buildtools.native")
     apply(plugin = "org.hibernate.orm")
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+    apply(plugin = "org.jetbrains.kotlin.plugin.noarg")
     apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
     apply(plugin = "org.jetbrains.kotlin.kapt")
 
@@ -81,6 +82,7 @@ allprojects {
             dependency("org.springframework.security:spring-security-config:6.1.3")
             dependency("org.springframework.security:spring-security-web:6.1.3")
 
+            dependency("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 
 //            dependency("org.springframework.cloud:spring-cloud-commons:3.0.4")
 //            dependency("org.springframework.cloud:spring-cloud-context:3.0.4")

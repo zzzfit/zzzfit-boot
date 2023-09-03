@@ -29,6 +29,8 @@ dependencies {
     implementation("com.mysql:mysql-connector-j")
     implementation("org.hibernate:hibernate-core")
     implementation("org.hibernate:hibernate-validator")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui")
+
 
     implementation(project(":upms"))
     implementation(project(":data"))
@@ -36,6 +38,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
+
+
 //    testImplementation("io.rest-assured:rest-assured")
 }
 //

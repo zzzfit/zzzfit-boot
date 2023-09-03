@@ -51,7 +51,7 @@ class Role : Managed<Long>() {
 
     @Id
     @GeneratedValue
-    val id: Long? = null
+    var id: Long = 0
 
     @Column(length = 63, unique = true, nullable = false)
     var name: String? = null
@@ -70,7 +70,7 @@ class Authority : Managed<Long>() {
 
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     @Column(length = 63, unique = true, nullable = false)
     var name: String? = null
@@ -81,7 +81,7 @@ class Organization : Managed<Long>() {
 
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     @Column(length = 63, unique = true, nullable = false)
     var name: String? = null
@@ -97,7 +97,7 @@ class Organization : Managed<Long>() {
 class Tenant : Managed<Long>() {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     @Column(length = 63, unique = true, nullable = false)
     var name: String? = null
@@ -111,11 +111,14 @@ class Tenant : Managed<Long>() {
         Index(columnList = "email"),
     ]
 )
-class User : Managed<Long>() {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type")
+@DiscriminatorValue("member")
+open class User : Managed<Long>() {
 
     @Id
     @GeneratedValue
-    val id: Long? = null
+    var id: Long = 0
 
     @Column(length = 63, unique = true, nullable = false)
     var username: String? = null
@@ -146,10 +149,6 @@ class User : Managed<Long>() {
 @Embeddable
 class UserDetail {
 
-    @Id
-    @GeneratedValue
-    val id: Long? = null
-
     enum class Gender {
         MALE, FEMALE
     }
@@ -164,7 +163,7 @@ class UserDetail {
 }
 
 @Entity
-class Dian : Managed<Long>() {
+class Dian {//}: Managed<Long>() {
 
     enum class Status {
         OpeningSoon,
@@ -176,7 +175,10 @@ class Dian : Managed<Long>() {
 
     @Id
     @GeneratedValue
-    val id: Long? = null
+    var id: Long = 0
+
+    @Column(length = 63, nullable = false)
+    var name: String? = null
 
 //    @Column(nullable = false)
 //    @ManyToOne
@@ -187,6 +189,7 @@ class Dian : Managed<Long>() {
 
     @Column(name = "status")
     var status: Status? = null
+
     @Column(name = "business_hour_start")
 
     @Temporal(TemporalType.TIME)
@@ -204,7 +207,7 @@ class Dian : Managed<Long>() {
 class Franchisee : Managed<Long>() {
     @Id
     @GeneratedValue
-    val id: Long? = null
+    var id: Long = 0
 }
 
 @Entity
@@ -212,7 +215,7 @@ class Alliance : Managed<Long>() {
 
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     @OneToMany
     var dians: Collection<Dian>? = null
@@ -222,7 +225,7 @@ class Alliance : Managed<Long>() {
 class Invoice {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     @Column(nullable = false, length = 16)
     var number: String? = null
@@ -238,7 +241,7 @@ class Invoice {
 class Course {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     var tags: String? = null
 }
@@ -247,63 +250,54 @@ class Course {
 class Payment {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 }
 
 @Entity
 class Order {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 }
 
 @Entity
 class Coupon {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 }
 
 @Entity
 class Campaign {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 }
 
 @Entity
 class Lead {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 }
 
 @Entity
 class Contract {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 }
 
 @Entity
-class Staff {
-    @Id
-    @GeneratedValue
-    var id: Long? = null
-}
-
-@Entity
-class Member {
-    @Id
-    @GeneratedValue
-    var id: Long? = null
+@DiscriminatorValue("staff")
+class Staff : User() {
 }
 
 @Entity
 class Device {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 }
 
 @Entity
@@ -311,7 +305,7 @@ class Device {
 class Address {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     var province: String? = null
 
@@ -369,15 +363,15 @@ class MemberCard {
     @Column(precision = 12, scale = 2)
     var paidAmount: BigDecimal? = null
 
-    @Column(name = "applicable_dian")
-    var applicableDians: Set<Dian>? = HashSet()
+//    @Column(name = "applicable_dian")
+//    var applicableDians: Set<Dian>? = HashSet()
 }
 
 @Entity
 class Voucher {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 }
 
 @Entity
@@ -394,18 +388,17 @@ class Class {
     var id: Long? = null
 
     @OneToMany
-    var teachers: Set<Staff> = HashSet()
+    var teachers: MutableSet<Staff> = HashSet()
 
     @OneToMany
-    var attendants: Set<Member> = HashSet()
+    var attendants: MutableSet<User> = HashSet()
 }
-
 
 @Entity
 class Attendance {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     @OneToOne
     var `class`: Class? = null
@@ -418,18 +411,27 @@ class Attendance {
 class Appointment {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     @OneToOne
     var `class`: Class? = null
 }
+
 @Entity
 class Invitation : Managed<Long>() {
     @Id
     @GeneratedValue
-    var id: Long? = null
+    var id: Long = 0
 
     @Column(nullable = false)
     @Temporal(TemporalType.TIME)
     var `when`: Time? = null
 }
+
+//
+//@Entity
+//class Dian1 {
+//    @Id
+//    @GeneratedValue
+//    var id: Long = 0
+//}

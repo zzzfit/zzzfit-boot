@@ -1,40 +1,29 @@
 package cloud.zzzfit.data.repository
 
-import cloud.zzzfit.data.entity.Alliance
-import cloud.zzzfit.data.entity.Dian
-import cloud.zzzfit.data.entity.Tenant
-import cloud.zzzfit.data.entity.User
+//import org.springframework.data.querydsl.QuerydslPredicateExecutor
+import cloud.zzzfit.data.entity.*
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
-//import org.springframework.data.querydsl.QuerydslPredicateExecutor
-import org.springframework.data.repository.PagingAndSortingRepository
+import org.springframework.stereotype.Repository
 
-interface UserRepository : JpaRepository<User, Long>
-//    , QuerydslPredicateExecutor<User>
-{
-//    fun findByUsername(username: String, pageable: Pageable): Page<User>
+interface UserRepository : JpaRepository<User, Long> {
+    fun findByUsername(username: String, pageable: Pageable): Page<User>
 
-    /**
-     * Tweak the Querydsl binding if collection resources are filtered.
-     *
-     * @see org.springframework.data.web.querydsl.QuerydslBinderCustomizer.customize
-     */
-//    fun customize(bindings: QuerydslBindings, store: QStore) {
-//        bindings.bind(store.address.city).first(StringExpression::endsWith)
-//        bindings.bind<String>(String::class.java)
-//            .first(StringExpression::contains as SingleValueBinding<StringPath?, String>?)
-//    }
+
 }
 
-interface DianRepository : PagingAndSortingRepository<Dian, Long>
+
+interface DianRepository : JpaRepository<Dian, Long> {
+    fun findByName(name: String): Dian?
+}
 //    ,
 //    QuerydslPredicateExecutor<Dian> {}
-
-interface TenantRepository : PagingAndSortingRepository<Tenant, Long>
-//    ,
-//    QuerydslPredicateExecutor<Tenant> {}
-
-interface AllianceRepository : PagingAndSortingRepository<Alliance, Long>
-//    ,
-//    QuerydslPredicateExecutor<Alliance> {}
+//
+//interface TenantRepository : JpaRepository<Tenant, Long>
+////    ,
+////    QuerydslPredicateExecutor<Tenant> {}
+//
+//interface AllianceRepository : JpaRepository<Alliance, Long>
+////    ,
+////    QuerydslPredicateExecutor<Alliance> {}
