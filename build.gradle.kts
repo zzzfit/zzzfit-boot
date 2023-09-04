@@ -100,8 +100,9 @@ allprojects {
             dependency("org.hibernate:hibernate-core:$hibernateVersion")
             dependency("org.hibernate:hibernate-validator:8.0.1.Final")
 
-            dependency("com.querydsl:querydsl-core:$queryDslVersion")
-            dependency("com.querydsl:querydsl-jpa:$queryDslVersion")
+//            dependency("com.querydsl:querydsl-core:$queryDslVersion")
+//            dependency("com.querydsl:querydsl-jpa:$queryDslVersion")
+//            dependency("com.querydsl:querydsl-kotlin-codegen:$queryDslVersion")
 
 //
 //

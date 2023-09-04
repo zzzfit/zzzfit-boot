@@ -5,6 +5,8 @@ import cloud.zzzfit.data.entity.*
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.querydsl.QuerydslPredicateExecutor
+import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer
 import org.springframework.stereotype.Repository
 
 interface UserRepository : JpaRepository<User, Long> {
@@ -27,3 +29,6 @@ interface DianRepository : JpaRepository<Dian, Long> {
 //interface AllianceRepository : JpaRepository<Alliance, Long>
 ////    ,
 ////    QuerydslPredicateExecutor<Alliance> {}
+interface OrganizationRepository : JpaRepository<Organization, Long>
+//    , QuerydslPredicateExecutor<Organization>, QuerydslBinderCustomizer<QOrganization> {}
+
