@@ -1,5 +1,6 @@
 package cloud.zzzfit.data.test.repository
 
+import cloud.zzzfit.data.entity.Dian
 import cloud.zzzfit.data.repository.DianRepository
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
@@ -53,13 +54,16 @@ class DianRepositoryTests {
         Assertions.assertThat(tutorials).isEmpty()
     }
 
-//    @Test
-//    fun should_store_a_tutorial() {
-//        val tutorial = repository!!.save(Tutorial("Tut title", "Tut desc", true))
-//        Assertions.assertThat(tutorial).hasFieldOrPropertyWithValue("title", "Tut title")
-//        Assertions.assertThat(tutorial).hasFieldOrPropertyWithValue("description", "Tut desc")
-//        Assertions.assertThat(tutorial).hasFieldOrPropertyWithValue("published", true)
-//    }
+    @Test
+    fun should_store_a_tutorial() {
+        var dian = Dian()
+        dian.name = "dian1"
+        dian.description = "the dian"
+        dian = dianRepository.save(dian)
+        Assertions.assertThat(dian).hasFieldOrPropertyWithValue("name", "dian1")
+        Assertions.assertThat(dian).hasFieldOrPropertyWithValue("description", "the dian")
+//        Assertions.assertThat(dian).hasFieldOrPropertyWithValue("published", true)
+    }
 //
 //    @Test
 //    fun should_find_all_tutorials() {

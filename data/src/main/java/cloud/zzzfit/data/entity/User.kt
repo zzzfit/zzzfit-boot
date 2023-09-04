@@ -19,20 +19,18 @@ abstract class Audited<T : Serializable> {
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     var createdAt: Timestamp? = null
 
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
     var updatedAt: Timestamp? = null
 
     @CreatedBy
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     var createdBy: T? = null
 
     @LastModifiedBy
-    @Column(nullable = false)
     var updatedBy: T? = null
 }
 
@@ -91,17 +89,20 @@ class Organization : Managed<Long>() {
 
     @ManyToOne
     var parent: Organization? = null
+
+    @Column(nullable = false)
+    var ownedBy: Long? = null
 }
 
-@Entity
-class Tenant : Managed<Long>() {
-    @Id
-    @GeneratedValue
-    var id: Long = 0
-
-    @Column(length = 63, unique = true, nullable = false)
-    var name: String? = null
-}
+//@Entity
+//class Tenant : Managed<Long>() {
+//    @Id
+//    @GeneratedValue
+//    var id: Long = 0
+//
+//    @Column(length = 63, unique = true, nullable = false)
+//    var name: String? = null
+//}
 
 @Entity
 @Table(
@@ -113,7 +114,7 @@ class Tenant : Managed<Long>() {
 )
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
-@DiscriminatorValue("member")
+//@DiscriminatorValue("member")
 open class User : Managed<Long>() {
 
     @Id
@@ -289,8 +290,25 @@ class Contract {
 }
 
 @Entity
-@DiscriminatorValue("staff")
-class Staff : User() {
+@DiscriminatorValue("member")
+class Member : User() {
+    @Column(name="member_id")
+    var memberId: String? = null
+}
+
+@Entity
+@DiscriminatorValue("coach")
+class Coach : User() {
+    @Column(name="coach_id")
+    var coachId: String? = null
+}
+
+
+@Entity
+@DiscriminatorValue("store")
+class Store : User() {
+    @Column(name="store_id")
+    var storeId: String? = null
 }
 
 @Entity
@@ -388,10 +406,10 @@ class Class {
     var id: Long? = null
 
     @OneToMany
-    var teachers: MutableSet<Staff> = HashSet()
+    var teachers: MutableSet<Coach> = HashSet()
 
     @OneToMany
-    var attendants: MutableSet<User> = HashSet()
+    var attendants: MutableSet<Member> = HashSet()
 }
 
 @Entity
@@ -427,11 +445,3 @@ class Invitation : Managed<Long>() {
     @Temporal(TemporalType.TIME)
     var `when`: Time? = null
 }
-
-//
-//@Entity
-//class Dian1 {
-//    @Id
-//    @GeneratedValue
-//    var id: Long = 0
-//}
