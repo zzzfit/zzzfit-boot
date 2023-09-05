@@ -60,7 +60,7 @@ class Role : Managed<Long>() {
         joinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")],
         inverseJoinColumns = [JoinColumn(name = "authority_id", referencedColumnName = "id")]
     )
-    var authorities: Set<Authority> = HashSet()
+    var authorities: MutableSet<Authority> = HashSet()
 }
 
 @Entity
@@ -85,7 +85,7 @@ class Organization : Managed<Long>() {
     var name: String? = null
 
     @OneToMany(mappedBy = "parent")
-    var children: List<Organization>? = null
+    var children: MutableList<Organization>? = null
 
     @ManyToOne
     var parent: Organization? = null
@@ -144,7 +144,7 @@ open class User : Managed<Long>() {
         joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "id")],
         inverseJoinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")]
     )
-    var roles: Set<Role> = HashSet()
+    var roles: MutableSet<Role> = HashSet()
 }
 
 @Embeddable
@@ -218,8 +218,8 @@ class Alliance : Managed<Long>() {
     @GeneratedValue
     var id: Long = 0
 
-    @OneToMany
-    var dians: Collection<Dian> = HashSet()
+//    @OneToMany
+//    var dians: Collection<Dian> = HashSet()
 }
 
 @Entity

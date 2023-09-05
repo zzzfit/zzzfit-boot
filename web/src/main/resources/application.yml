@@ -30,7 +30,7 @@ spring:
               action: drop-and-create
               create-target: create.sql
               drop-target: create.sql
-
-logging:
-  level:
-    root: debug
+#
+#logging:
+#  level:
+#    root: debug

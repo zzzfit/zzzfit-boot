@@ -68,9 +68,7 @@ allprojects {
         dependencies {
             imports {
                 mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
-//                mavenBom("org.springframework.cloud:spring-cloud-sleuth-otel-dependencies:1.1.4")
                 mavenBom("io.micrometer:micrometer-bom:1.11.3")
-
             }
             dependency("org.springframework.security:spring-security-oauth2-authorization-server:1.1.2")
             dependency("org.projectlombok:lombok:1.18.20")
@@ -80,12 +78,10 @@ allprojects {
 //            dependency("commons-codec:commons-codec:1.16.0")
 //            dependency("cn.hutool:hutool-all:5.8.21")
 //            dependency("eu.bitwalker:UserAgentUtils:1.21")
-//            dependency("jakarta.servlet:javax.servlet-api:3.1.0")
 
 //            dependency("com.alibaba:fastjson:2.0.39")
 //            dependency("com.google.code.gson:gson:2.10")
 
-//            dependency("io.micrometer:micrometer-core:1.11.3")
 //            dependency("org.apache.commons:commons-lang3:3.13.0")
 //            dependency("com.google.guava:guava:32.1.2-jre")
             dependency("org.springframework.security:spring-security-core:$springSecurityVersion")
@@ -103,7 +99,6 @@ allprojects {
 
             dependency("com.mysql:mysql-connector-j:8.1.0")
 //            dependency("ch.qos.logback:logback-classic:1.4.11")
-            dependency("io.rest-assured:rest-assured:4.5.1")
 //            dependency("org.freemarker:freemarker:2.3.29")
 
             dependency("com.h2database:h2:2.2.220")
@@ -140,12 +135,6 @@ allprojects {
 //            dependency("org.jpmml:pmml-evaluator:1.5.15")
 //            dependency("io.reactivex.rxjava2:rxjava:2.2.21")
 //
-//            dependency("io.vertx:vertx-core:4.0.0")
-//            dependency("io.vertx:vertx-web:4.0.0")
-//            dependency("io.vertx:vertx-web-client:4.0.0")
-//            dependency("io.vertx:vertx-rx-java2:4.0.0")
-//
-//            dependency("io.micrometer:micrometer-core:1.7.4")
 //            dependency("com.jcraft:jsch:0.1.55")
 //            dependency("com.github.ben-manes.caffeine:caffeine:2.8.8")
 //            dependency("com.alibaba:easyexcel:2.2.11")
@@ -153,7 +142,6 @@ allprojects {
 //            dependency("com.opencsv:opencsv:5.5.2")
 //            dependency("org.springframework.retry:spring-retry:1.3.1")
 //            dependency("org.xbib.jdbc:jdbc-driver-csv:1.2.0")
-//            dependency("javax.xml.bind:jaxb-api:2.3.1")
 //            dependency("io.grpc:grpc-protobuf:1.40.1")
 //            dependency("io.grpc:grpc-kotlin-stub:1.1.0")
 //            dependency("io.grpc:grpc-core:1.40.1")

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository
 interface UserRepository : JpaRepository<User, Long> {
     fun findByUsername(username: String, pageable: Pageable): Page<User>
 
-
+    fun findByUsernameAndPassword(username: String, password: String): User?
 }
 
 
