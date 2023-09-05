@@ -219,7 +219,7 @@ class Alliance : Managed<Long>() {
     var id: Long = 0
 
     @OneToMany
-    var dians: Collection<Dian>? = null
+    var dians: Collection<Dian> = HashSet()
 }
 
 @Entity
@@ -395,25 +395,25 @@ class Voucher {
     var id: Long = 0
 }
 
-@Entity
-class Class {
-
-    enum class Type {
-        OneVsOne,
-        OneVsTwo,
-        OneVsThree
-    }
-
-    @Id
-    @GeneratedValue
-    var id: Long? = null
-
-    @OneToMany
-    var teachers: MutableSet<Coach> = HashSet()
-
-    @OneToMany
-    var attendants: MutableSet<Member> = HashSet()
-}
+//@Entity
+//class Class {
+//
+//    enum class Type {
+//        OneVsOne,
+//        OneVsTwo,
+//        OneVsThree
+//    }
+//
+//    @Id
+//    @GeneratedValue
+//    var id: Long? = null
+//
+//    @OneToMany
+//    var teachers: MutableSet<Coach> = HashSet()
+//
+//    @OneToMany
+//    var attendants: MutableSet<Member> = HashSet()
+//}
 
 @Entity
 class Attendance {
@@ -421,8 +421,8 @@ class Attendance {
     @GeneratedValue
     var id: Long = 0
 
-    @OneToOne
-    var `class`: Class? = null
+//    @OneToOne
+//    var `class`: Class? = null
 
     @Temporal(TemporalType.TIMESTAMP)
     var checkInTime: Timestamp? = null
@@ -434,8 +434,8 @@ class Appointment {
     @GeneratedValue
     var id: Long = 0
 
-    @OneToOne
-    var `class`: Class? = null
+//    @OneToOne
+//    var `class`: Class? = null
 }
 
 @Entity

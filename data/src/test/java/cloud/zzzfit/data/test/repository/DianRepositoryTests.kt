@@ -2,7 +2,8 @@ package cloud.zzzfit.data.test.repository
 
 import cloud.zzzfit.data.entity.Dian
 import cloud.zzzfit.data.repository.DianRepository
-import org.assertj.core.api.Assertions
+import cloud.zzzfit.data.repository.OrganizationRepository
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
@@ -51,7 +52,7 @@ class DianRepositoryTests {
     @Test
     fun should_find_no_tutorials_if_repository_is_empty() {
         val tutorials  = dianRepository.findAll()
-        Assertions.assertThat(tutorials).isEmpty()
+        assertThat(tutorials).isEmpty()
     }
 
     @Test
@@ -60,8 +61,8 @@ class DianRepositoryTests {
         dian.name = "dian1"
         dian.description = "the dian"
         dian = dianRepository.save(dian)
-        Assertions.assertThat(dian).hasFieldOrPropertyWithValue("name", "dian1")
-        Assertions.assertThat(dian).hasFieldOrPropertyWithValue("description", "the dian")
+        assertThat(dian).hasFieldOrPropertyWithValue("name", "dian1")
+        assertThat(dian).hasFieldOrPropertyWithValue("description", "the dian")
 //        Assertions.assertThat(dian).hasFieldOrPropertyWithValue("published", true)
     }
 //
@@ -150,4 +151,15 @@ class DianRepositoryTests {
 //        repository!!.deleteAll()
 //        Assertions.assertThat(repository!!.findAll()).isEmpty()
 //    }
+}
+
+@DataJpaTest
+class OrganizationTests(@Autowired private var entityManager: TestEntityManager) {
+    @Autowired
+    lateinit var orgRepository: OrganizationRepository
+
+    @Test
+    fun should_delete_all_tutorials() {
+        assertThat(true)
+    }
 }
