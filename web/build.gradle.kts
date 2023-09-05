@@ -22,14 +22,19 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-logging")
+    implementation("org.springframework.boot:spring-boot-actuator-autoconfigure")
+
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("org.springframework.security:spring-security-oauth2-authorization-server")
 
-    implementation("com.h2database:h2")
+    runtimeOnly("com.h2database:h2")
     implementation("com.mysql:mysql-connector-j")
     implementation("org.hibernate:hibernate-core")
     implementation("org.hibernate:hibernate-validator")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui")
+    implementation("org.springframework.cloud:spring-cloud-commons")
+    implementation("io.micrometer:micrometer-core")
+    implementation("io.micrometer:micrometer-tracing-bridge-otel")
 
 
     implementation(project(":upms"))
@@ -38,21 +43,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
-
-
-//    testImplementation("io.rest-assured:rest-assured")
+    testImplementation("io.rest-assured:rest-assured")
 }
-//
-//kapt {
-//    javacOptions {
-//        option("querydsl.entityAccessors", true)
-//    }
-//    arguments {
-//        arg("plugin", "com.querydsl.apt.jpa.JPAAnnotationProcessor")
-//    }
-//}
-
-
 
 tasks.withType<BootBuildImage> {
 

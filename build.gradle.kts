@@ -7,12 +7,17 @@ import java.net.URI
 
 val kotlinVersion: String by extra
 val springBootVersion: String by extra
+val springCloudVersion: String by extra
+val springSecurityVersion: String by extra
+
 val hibernateVersion: String by extra
 val queryDslVersion: String by extra
 
 buildscript {
     val kotlinVersion by extra { "1.9.10" }
     val springBootVersion by extra { "3.1.3" }
+    val springCloudVersion by extra { "2022.0.4" }
+    val springSecurityVersion by extra { "6.1.3"}
     val hibernateVersion by extra { "6.2.7.Final" }
     val queryDslVersion by extra { "5.0.0" }
 
@@ -61,26 +66,31 @@ allprojects {
 
     configure<DependencyManagementExtension> {
         dependencies {
+            imports {
+                mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
+//                mavenBom("org.springframework.cloud:spring-cloud-sleuth-otel-dependencies:1.1.4")
+                mavenBom("io.micrometer:micrometer-bom:1.11.3")
+
+            }
             dependency("org.springframework.security:spring-security-oauth2-authorization-server:1.1.2")
             dependency("org.projectlombok:lombok:1.18.20")
+//            dependency("com.fasterxml.jackson.core:jackson-annotations:2.14.0")
+//            dependency("com.fasterxml.jackson.core:jackson-core:2.14.0")
+//            dependency("com.fasterxml.jackson.core:jackson-databind:2.14.0")
+//            dependency("commons-codec:commons-codec:1.16.0")
+//            dependency("cn.hutool:hutool-all:5.8.21")
+//            dependency("eu.bitwalker:UserAgentUtils:1.21")
+//            dependency("jakarta.servlet:javax.servlet-api:3.1.0")
 
-            dependency("com.fasterxml.jackson.core:jackson-annotations:2.14.0")
-            dependency("com.fasterxml.jackson.core:jackson-core:2.14.0")
-            dependency("com.fasterxml.jackson.core:jackson-databind:2.14.0")
-            dependency("commons-codec:commons-codec:1.16.0")
-            dependency("cn.hutool:hutool-all:5.8.21")
-            dependency("eu.bitwalker:UserAgentUtils:1.21")
-            dependency("jakarta.servlet:javax.servlet-api:3.1.0")
+//            dependency("com.alibaba:fastjson:2.0.39")
+//            dependency("com.google.code.gson:gson:2.10")
 
-            dependency("com.alibaba:fastjson:2.0.39")
-            dependency("com.google.code.gson:gson:2.10")
-
-            dependency("io.micrometer:micrometer-core:1.11.3")
-            dependency("org.apache.commons:commons-lang3:3.13.0")
-            dependency("com.google.guava:guava:32.1.2-jre")
-            dependency("org.springframework.security:spring-security-core:6.1.3")
-            dependency("org.springframework.security:spring-security-config:6.1.3")
-            dependency("org.springframework.security:spring-security-web:6.1.3")
+//            dependency("io.micrometer:micrometer-core:1.11.3")
+//            dependency("org.apache.commons:commons-lang3:3.13.0")
+//            dependency("com.google.guava:guava:32.1.2-jre")
+            dependency("org.springframework.security:spring-security-core:$springSecurityVersion")
+            dependency("org.springframework.security:spring-security-config:$springSecurityVersion")
+            dependency("org.springframework.security:spring-security-web:$springSecurityVersion")
 
             dependency("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 
@@ -92,9 +102,9 @@ allprojects {
 //            dependency("org.springframework.cloud:spring-cloud-consul-discovery:3.0.4")
 
             dependency("com.mysql:mysql-connector-j:8.1.0")
-            dependency("ch.qos.logback:logback-classic:1.4.11")
+//            dependency("ch.qos.logback:logback-classic:1.4.11")
             dependency("io.rest-assured:rest-assured:4.5.1")
-            dependency("org.freemarker:freemarker:2.3.29")
+//            dependency("org.freemarker:freemarker:2.3.29")
 
             dependency("com.h2database:h2:2.2.220")
             dependency("org.hibernate:hibernate-core:$hibernateVersion")

@@ -1,4 +1,4 @@
-package com.ceam.web.test
+package cloud.zzzfit.web.test.cloud.zzzfit.web.test
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach

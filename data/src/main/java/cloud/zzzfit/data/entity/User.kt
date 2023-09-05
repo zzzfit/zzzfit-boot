@@ -301,6 +301,9 @@ class Member : User() {
 class Coach : User() {
     @Column(name="coach_id")
     var coachId: String? = null
+
+    @Column(name="image_urls")
+    var imageUrls: String? = null
 }
 
 
