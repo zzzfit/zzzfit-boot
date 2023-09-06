@@ -1,12 +1,12 @@
 dependencies {
-    implementation("jakarta.servlet:jakarta.servlet-api")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-logging")
-    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    compileOnly("jakarta.servlet:jakarta.servlet-api")
+
+    implementation("org.springframework:spring-orm")
+    implementation("org.springframework:spring-webmvc")
+
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("org.springframework.security:spring-security-oauth2-authorization-server")
-//    implementation("com.querydsl:querydsl-jpa:${property("queryDslVersion")}:jakarta")
-//    kapt("com.querydsl:querydsl-apt:${property("queryDslVersion")}:jakarta")
     implementation(project(":data"))
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
