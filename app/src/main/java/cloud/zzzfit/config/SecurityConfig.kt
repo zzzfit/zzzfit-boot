@@ -1,4 +1,4 @@
-package cloud.zzzfit.web.config
+package cloud.zzzfit.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

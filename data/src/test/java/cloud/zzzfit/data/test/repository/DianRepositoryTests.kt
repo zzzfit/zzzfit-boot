@@ -9,39 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 
-//@DataJpaTest
-//class DianRepositoryTests(
-//    @Autowired val entityManager: TestEntityManager,
-////    @Autowired dianRepository: DianRepository,
-//) {
-//
-//    @Autowired
-//    private lateinit var dianRepository: DianRepository
-//
-//    @Test
-//    fun test11() {
-////        val user = Dian()
-////        user.setDisplayName("Chinna")
-////        user.setEmail("java4chinna@gmail.com")
-////        // Add a role to the user
-////        // Add a role to the user
-////        val adminRole: Role = roleRepository.findByName(Role.ROLE_ADMIN)
-////        user.addRole(roleRepository.findByName(Role.ROLE_USER))
-////        user.addRole(adminRole)
-////        user = userRepository.saveAndFlush(user)
-////        assertEquals(2, user.getRoles().size())
-//        assertTrue(true)
-//    }
-//
-////    @Test
-////    fun testExample() {
-////        entityManager.persist(User("sboot", "1234"))
-////        val user = repository.findByUsername("sboot")
-////        assertThat(user?.username).isEqualTo("sboot")
-////        assertThat(user?.employeeNumber).isEqualTo("1234")
-////    }
-//}
-
 @DataJpaTest
 class DianRepositoryTests {
     @Autowired

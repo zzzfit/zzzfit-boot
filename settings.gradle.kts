@@ -1,1 +1,1 @@
-include("data", "upms", "web")
+include("data", "upms", "web", "app")

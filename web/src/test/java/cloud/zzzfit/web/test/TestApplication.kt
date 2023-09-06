@@ -1,4 +1,4 @@
-package cloud.zzzfit.data
+package cloud.zzzfit.web.test
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

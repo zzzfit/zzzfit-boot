@@ -43,10 +43,10 @@ allprojects {
     version = "0.0.1-SNAPSHOT"
 
     apply(plugin = "java")
-    apply(plugin = "org.springframework.boot")
+//    apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "org.graalvm.buildtools.native")
+//    apply(plugin = "org.graalvm.buildtools.native")
     apply(plugin = "org.hibernate.orm")
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
@@ -67,6 +67,7 @@ allprojects {
     configure<DependencyManagementExtension> {
         dependencies {
             imports {
+                mavenBom("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
                 mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
                 mavenBom("io.micrometer:micrometer-bom:1.11.3")
             }
