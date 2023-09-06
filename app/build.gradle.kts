@@ -2,6 +2,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 apply(plugin = "org.springframework.boot")
 apply(plugin = "org.graalvm.buildtools.native")
+apply(plugin = "org.springdoc.openapi-gradle-plugin")
 
 dependencies {
 //    compileOnly("org.projectlombok:lombok")

@@ -34,6 +34,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
         classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("org.springdoc:springdoc-openapi-gradle-plugin:1.7.0")
     }
 }
 
@@ -46,7 +47,6 @@ allprojects {
 //    apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jetbrains.kotlin.jvm")
-//    apply(plugin = "org.graalvm.buildtools.native")
     apply(plugin = "org.hibernate.orm")
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")

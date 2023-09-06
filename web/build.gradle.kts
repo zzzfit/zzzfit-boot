@@ -7,6 +7,9 @@ dependencies {
     implementation("org.springframework:spring-context")
     implementation("org.springframework:spring-webmvc")
     implementation("org.springframework.data:spring-data-jpa")
+    implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
+
+
     implementation(project(":upms"))
     implementation(project(":data"))
 
