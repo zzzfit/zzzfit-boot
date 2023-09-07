@@ -4,8 +4,10 @@ dependencies {
 
     implementation("com.fasterxml.jackson.core:jackson-databind")
     implementation("org.springframework.data:spring-data-jpa")
+    implementation("org.hibernate.orm:hibernate-spatial")
     implementation("com.querydsl:querydsl-core")
     implementation("com.querydsl:querydsl-jpa")
+
     kapt("com.querydsl:querydsl-apt:${property("queryDslVersion")}:jakarta")
 
     testImplementation("com.h2database:h2")

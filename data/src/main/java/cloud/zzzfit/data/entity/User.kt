@@ -5,6 +5,7 @@ import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.geo.Point
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.io.Serializable
 import java.math.BigDecimal
@@ -192,7 +193,6 @@ class Dian : Managed<Long>() {
     var status: Status? = null
 
     @Column(name = "business_hour_start")
-
     @Temporal(TemporalType.TIME)
     var businessHourStart: Time? = null
 
@@ -202,6 +202,8 @@ class Dian : Managed<Long>() {
 
     @Column(name = "equipment_info")
     var equipmentInfo: String? = null
+
+//    var location: Point? = null
 }
 
 @Entity

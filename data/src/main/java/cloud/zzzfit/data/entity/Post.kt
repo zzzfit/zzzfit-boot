@@ -3,6 +3,7 @@ package cloud.zzzfit.data.entity
 import jakarta.persistence.*
 import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.Size
+import org.springframework.data.geo.GeoPage
 import java.io.Serializable
 
 @Entity
