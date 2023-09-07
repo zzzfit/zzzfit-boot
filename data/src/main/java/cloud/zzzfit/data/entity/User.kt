@@ -61,7 +61,7 @@ class Role : Managed<Long>() {
         joinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")],
         inverseJoinColumns = [JoinColumn(name = "authority_id", referencedColumnName = "id")]
     )
-    var authorities: MutableSet<Authority> = HashSet()
+    var authorities: MutableSet<Authority> = mutableSetOf()
 }
 
 @Entity
@@ -86,13 +86,16 @@ class Organization : Managed<Long>() {
     var name: String? = null
 
     @OneToMany(mappedBy = "parent")
-    var children: MutableList<Organization>? = null
+    var children: MutableSet<Organization> = mutableSetOf()
 
     @ManyToOne
     var parent: Organization? = null
 
-    @Column(nullable = false)
-    var ownedBy: Long? = null
+    @ManyToOne
+    var owner: Store? = null
+
+    @OneToMany
+    var dians: MutableSet<Dian> = mutableSetOf()
 }
 
 //@Entity
@@ -115,7 +118,6 @@ class Organization : Managed<Long>() {
 )
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
-//@DiscriminatorValue("member")
 open class User : Managed<Long>() {
 
     @Id
@@ -145,7 +147,7 @@ open class User : Managed<Long>() {
         joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "id")],
         inverseJoinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")]
     )
-    var roles: MutableSet<Role> = HashSet()
+    var roles: MutableSet<Role> = mutableSetOf()
 }
 
 @Embeddable
@@ -203,6 +205,8 @@ class Dian : Managed<Long>() {
     @Column(name = "equipment_info")
     var equipmentInfo: String? = null
 
+    @ManyToOne
+    var ownedBy: Organization? = null
 //    var location: Point? = null
 }
 
@@ -221,7 +225,7 @@ class Alliance : Managed<Long>() {
     var id: Long = 0
 
 //    @OneToMany
-//    var dians: Collection<Dian> = HashSet()
+//    var dians: MutableSet<Dian> = mutableSetOf()
 }
 
 @Entity
@@ -314,6 +318,9 @@ class Coach : User() {
 class Store : User() {
     @Column(name="store_id")
     var storeId: String? = null
+
+    @OneToMany
+    var organizations: MutableSet<Organization> = mutableSetOf()
 }
 
 @Entity
@@ -387,7 +394,7 @@ class MemberCard {
     var paidAmount: BigDecimal? = null
 
 //    @Column(name = "applicable_dian")
-//    var applicableDians: Set<Dian>? = HashSet()
+//    var applicableDians: MutableSet<Dian> = mutableSetOf()
 }
 
 @Entity

@@ -13,6 +13,8 @@ dependencies {
     testImplementation("com.h2database:h2")
     testImplementation("org.springframework:spring-aspects")
     testRuntimeOnly("org.jetbrains.kotlin:kotlin-reflect")
+    testRuntimeOnly("org.hibernate.orm:hibernate-testing")
+
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.junit.jupiter:junit-jupiter-api")

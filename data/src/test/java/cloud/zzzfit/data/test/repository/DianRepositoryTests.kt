@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
+import org.springframework.orm.hibernate5.HibernateCallback
 
 @DataJpaTest
 class DianRepositoryTests {
@@ -32,7 +33,19 @@ class DianRepositoryTests {
         assertThat(dian).hasFieldOrPropertyWithValue("description", "the dian")
 //        Assertions.assertThat(dian).hasFieldOrPropertyWithValue("published", true)
     }
+    @Test
+    fun givenPerson_whenSaved_thenFound() {
+
+//        doInHibernate
+//        doInHibernate(({ this.sessionFactory() }), { session ->
+//            val personToSave = Person("John")
+//            session.persist(personToSave)
+//            val personFound = session.find(Person::class.java, personToSave.id)
+//            session.refresh(personFound)
 //
+//            assertTrue(personToSave.name == personFound.name)
+//        })
+    }
 //    @Test
 //    fun should_find_all_tutorials() {
 //        val tut1 = Tutorial("Tut#1", "Desc#1", true)

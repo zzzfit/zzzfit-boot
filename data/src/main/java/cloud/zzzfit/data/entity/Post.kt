@@ -32,7 +32,7 @@ class Post(
     @OneToMany(mappedBy = "post", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @OrderBy("id DESC")
 //    @Where(clause = "pid=0")
-    val comments: List<Comment>? = null
+    var comments: MutableSet<Comment> = mutableSetOf()
 }
 
 
