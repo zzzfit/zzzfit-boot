@@ -184,3 +184,30 @@ class Oauth2RegisteredClient  {
     @Column(name="token_settings", length = 2000)
     var tokenSettings: String? =null
 }
+
+@Entity
+class CodeVerification {
+    enum class Status {
+        Verifying,
+        Verified,
+        Canceled,
+    }
+    @Id
+    @GeneratedValue
+    var id: Long = 0
+
+    @Column(nullable = false)
+    var mobile: String? = null
+
+    @Column(nullable = false)
+    var email: String? = null
+
+    var code: String? = null
+
+    @Enumerated(EnumType.STRING)
+    var status: Status? = null
+
+    var createdAt: Timestamp? = null
+
+    var expiredAt: Timestamp? = null
+}

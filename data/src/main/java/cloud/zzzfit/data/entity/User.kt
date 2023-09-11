@@ -456,4 +456,13 @@ class Invitation : Managed<Long>() {
     @Column(nullable = false)
     @Temporal(TemporalType.TIME)
     var `when`: Time? = null
+
+    var expiredAt: Timestamp? = null
+}
+
+@Entity
+class Tag {
+    @Id
+    @GeneratedValue
+    var id: Long = 0
 }
