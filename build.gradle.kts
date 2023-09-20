@@ -1,60 +1,34 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
+import org.jetbrains.kotlin.gradle.plugin.extraProperties
 import org.jetbrains.kotlin.gradle.tasks.Kapt
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URI
 
-val kotlinVersion: String by extra
 val springBootVersion: String by extra
 val springCloudVersion: String by extra
 val springSecurityVersion: String by extra
-
 val hibernateVersion: String by extra
-val queryDslVersion: String by extra
-
-buildscript {
-    val kotlinVersion by extra { "1.9.10" }
-    val springBootVersion by extra { "3.1.3" }
-    val springCloudVersion by extra { "2022.0.4" }
-    val springSecurityVersion by extra { "6.1.3"}
-    val hibernateVersion by extra { "6.2.7.Final" }
-    val queryDslVersion by extra { "5.0.0" }
-
-//    repositories {
-//        gradlePluginPortal()
-//        maven { url = java.net.URI("https://maven.aliyun.com/repository/central") }
-//    }
-//
-//    dependencies {
-//        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
-//        classpath("org.hibernate.orm:hibernate-gradle-plugin:$hibernateVersion")
-//        classpath("io.spring.gradle:dependency-management-plugin:1.1.3")
-//        classpath("org.graalvm.buildtools:native-gradle-plugin:0.9.25")
-//        classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
-//        classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
-//        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-//        classpath("org.springdoc:springdoc-openapi-gradle-plugin:1.7.0")
-//    }
-}
+//val queryDslVersion: String by extra
 
 plugins {
-    id("io.spring.dependency-management") version "1.1.3" apply false
-    id("org.springframework.boot") version "3.1.3" apply false
-    id("org.hibernate.orm") version "6.2.7.Final" apply false
-    kotlin("jvm") version "1.9.10"  apply false
-    kotlin("plugin.spring") version "1.9.10"  apply false
-    kotlin("plugin.jpa") version "1.9.10"  apply false
-    kotlin("plugin.allopen") version "1.9.10"  apply false
-    kotlin("plugin.noarg") version "1.9.10"  apply false
-    kotlin("kapt") version "1.9.10"  apply false
-    id("org.springdoc.openapi-gradle-plugin") version "1.7.0" apply false
-    id("org.graalvm.buildtools.native") version "0.9.27" apply false
+    id("io.spring.dependency-management").apply(false)
+    id("org.springframework.boot").apply(false)
+    id("org.hibernate.orm").apply(false)
+    kotlin("jvm").apply(false)
+    kotlin("plugin.spring").apply(false)
+    kotlin("plugin.jpa").apply(false)
+    kotlin("plugin.allopen").apply(false)
+    kotlin("plugin.noarg").apply(false)
+    kotlin("kapt").apply(false)
+    id("org.springdoc.openapi-gradle-plugin").apply(false)
+    id("org.graalvm.buildtools.native").apply(false)
     jacoco
-    id("org.sonarqube") version "4.3.1.3277" apply false
+    id("org.sonarqube").apply(false)
 }
 
-allprojects {
+subprojects {
     group = "cloud.zzzfit"
     version = "0.0.1-SNAPSHOT"
 
@@ -83,7 +57,7 @@ allprojects {
     configure<DependencyManagementExtension> {
         dependencies {
             imports {
-                mavenBom("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+                mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
                 mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
                 mavenBom("io.micrometer:micrometer-bom:1.11.3")
             }
@@ -170,7 +144,6 @@ allprojects {
         }
     }
 
-
     tasks.withType<Test> {
         useJUnitPlatform()
     }
@@ -185,11 +158,8 @@ allprojects {
             freeCompilerArgs = listOf(
                 "-Xjsr305=strict",
                 "-Xjvm-default=all-compatibility"
-            ) // needed to override default methods on interfaces
+            )
             jvmTarget = "17"
         }
-    }
-
-    tasks.withType<Kapt> {
     }
 }
