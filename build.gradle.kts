@@ -21,30 +21,44 @@ buildscript {
     val hibernateVersion by extra { "6.2.7.Final" }
     val queryDslVersion by extra { "5.0.0" }
 
-    repositories {
-        gradlePluginPortal()
-        maven { url = java.net.URI("https://maven.aliyun.com/repository/central") }
-    }
-
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
-        classpath("org.hibernate.orm:hibernate-gradle-plugin:$hibernateVersion")
-        classpath("io.spring.gradle:dependency-management-plugin:1.1.3")
-        classpath("org.graalvm.buildtools:native-gradle-plugin:0.9.25")
-        classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
-        classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-        classpath("org.springdoc:springdoc-openapi-gradle-plugin:1.7.0")
-    }
+//    repositories {
+//        gradlePluginPortal()
+//        maven { url = java.net.URI("https://maven.aliyun.com/repository/central") }
+//    }
+//
+//    dependencies {
+//        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+//        classpath("org.hibernate.orm:hibernate-gradle-plugin:$hibernateVersion")
+//        classpath("io.spring.gradle:dependency-management-plugin:1.1.3")
+//        classpath("org.graalvm.buildtools:native-gradle-plugin:0.9.25")
+//        classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
+//        classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
+//        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+//        classpath("org.springdoc:springdoc-openapi-gradle-plugin:1.7.0")
+//    }
 }
 
+plugins {
+    id("io.spring.dependency-management") version "1.1.3" apply false
+    id("org.springframework.boot") version "3.1.3" apply false
+    id("org.hibernate.orm") version "6.2.7.Final" apply false
+    kotlin("jvm") version "1.9.10"  apply false
+    kotlin("plugin.spring") version "1.9.10"  apply false
+    kotlin("plugin.jpa") version "1.9.10"  apply false
+    kotlin("plugin.allopen") version "1.9.10"  apply false
+    kotlin("plugin.noarg") version "1.9.10"  apply false
+    kotlin("kapt") version "1.9.10"  apply false
+    id("org.springdoc.openapi-gradle-plugin") version "1.7.0" apply false
+    id("org.graalvm.buildtools.native") version "0.9.27" apply false
+    jacoco
+    id("org.sonarqube") version "4.3.1.3277" apply false
+}
 
 allprojects {
     group = "cloud.zzzfit"
     version = "0.0.1-SNAPSHOT"
 
     apply(plugin = "java")
-//    apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "org.hibernate.orm")
@@ -53,6 +67,8 @@ allprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.noarg")
     apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
     apply(plugin = "org.jetbrains.kotlin.kapt")
+    apply(plugin = "jacoco")
+    apply(plugin = "org.sonarqube")
 
     repositories {
         maven { url = URI("https://plugins.gradle.org/m2/") }
