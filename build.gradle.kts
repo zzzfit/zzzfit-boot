@@ -162,4 +162,8 @@ subprojects {
             jvmTarget = "17"
         }
     }
+
+    tasks.withType<JacocoReport> {
+        reports.xml.required = true
+    }
 }
