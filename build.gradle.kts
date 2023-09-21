@@ -175,9 +175,9 @@ subprojects {
         properties {
             property("sonar.projectKey", "${rootProject.name}-${project.name}")
             property("sonar.projectName", "${rootProject.name}-${project.name}")
-            property ("sonar.organization", System.getenv("sonar.organization") ?: "")
-            property ("sonar.host.url", System.getenv("sonar.host.url") ?: "")
-            property ("sonar.token", System.getenv("sonar.token") ?: "")
+            property ("sonar.organization", System.getenv("SONAR_ORGANIZATION") ?: "")
+            property ("sonar.host.url", System.getenv("SONAR_HOST_URL") ?: "")
+            property ("sonar.token", System.getenv("SONAR_TOKEN") ?: "")
         }
     }
 }
