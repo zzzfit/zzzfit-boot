@@ -80,6 +80,7 @@ subprojects {
             dependency("org.springframework.security:spring-security-web:$springSecurityVersion")
 
             dependency("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+            dependency("org.springdoc:springdoc-openapi-ui:1.7.0")
 
 //            dependency("org.springframework.cloud:spring-cloud-commons:3.0.4")
 //            dependency("org.springframework.cloud:spring-cloud-context:3.0.4")

@@ -7,8 +7,8 @@ dependencies {
     implementation("org.springframework:spring-context")
     implementation("org.springframework:spring-webmvc")
     implementation("org.springframework.data:spring-data-jpa")
-    implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
-
+    implementation("org.springdoc:springdoc-openapi-ui")
+    implementation("jakarta.servlet:jakarta.servlet-api")
 
     implementation(project(":upms"))
     implementation(project(":data"))
@@ -18,4 +18,5 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
 //    testImplementation("io.rest-assured:rest-assured")
     testImplementation("io.rest-assured:kotlin-extensions")
+
 }

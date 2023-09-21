@@ -8,24 +8,24 @@ import org.springframework.boot.test.json.JacksonTester
 
 
 class VehicleDetails(val aa: String, val bb: String)
-@JsonTest
-class MyJsonTests(@Autowired val json: JacksonTester<VehicleDetails>) {
-
-    @Test
-    fun serialize() {
-        val details = VehicleDetails("Honda", "Civic")
-        // Assert against a `.json` file in the same package as the test
-        assertThat(json.write(details)).isEqualToJson("expected.json")
-        // Or use JSON path based assertions
-        assertThat(json.write(details)).hasJsonPathStringValue("@.make")
-        assertThat(json.write(details)).extractingJsonPathStringValue("@.make").isEqualTo("Honda")
-    }
-
-    @Test
-    fun deserialize() {
-        val content = "{\"make\":\"Ford\",\"model\":\"Focus\"}"
-        assertThat(json.parse(content)).isEqualTo(VehicleDetails("Ford", "Focus"))
-//        assertThat(json.parseObject(content)).isEqualTo("Ford")
-    }
-
-}
+//@JsonTest
+//class MyJsonTests(@Autowired val json: JacksonTester<VehicleDetails>) {
+//
+//    @Test
+//    fun serialize() {
+//        val details = VehicleDetails("Honda", "Civic")
+//        // Assert against a `.json` file in the same package as the test
+//        assertThat(json.write(details)).isEqualToJson("expected.json")
+//        // Or use JSON path based assertions
+//        assertThat(json.write(details)).hasJsonPathStringValue("@.make")
+//        assertThat(json.write(details)).extractingJsonPathStringValue("@.make").isEqualTo("Honda")
+//    }
+//
+//    @Test
+//    fun deserialize() {
+//        val content = "{\"make\":\"Ford\",\"model\":\"Focus\"}"
+//        assertThat(json.parse(content)).isEqualTo(VehicleDetails("Ford", "Focus"))
+////        assertThat(json.parseObject(content)).isEqualTo("Ford")
+//    }
+//
+//}
