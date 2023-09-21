@@ -4,6 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.Kapt
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.sonarqube.gradle.SonarExtension
+import org.sonarqube.gradle.SonarTask
 import java.net.URI
 
 val springBootVersion: String by extra
@@ -167,5 +169,15 @@ subprojects {
     tasks.withType<JacocoReport> {
         dependsOn(tasks.withType<Test>())
         reports.xml.required = true
+    }
+
+    configure<SonarExtension> {
+        properties {
+            property("sonar.projectKey", "${rootProject.name}-${project.name}")
+            property("sonar.projectName", "${rootProject.name}-${project.name}")
+            property ("sonar.organization", System.getenv("sonar.organization") ?: "")
+            property ("sonar.host.url", System.getenv("sonar.host.url") ?: "")
+            property ("sonar.token", System.getenv("sonar.token") ?: "")
+        }
     }
 }

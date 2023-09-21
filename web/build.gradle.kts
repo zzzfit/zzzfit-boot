@@ -18,5 +18,4 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
 //    testImplementation("io.rest-assured:rest-assured")
     testImplementation("io.rest-assured:kotlin-extensions")
-
 }

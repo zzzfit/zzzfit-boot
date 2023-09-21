@@ -1,3 +1,5 @@
+rootProject.name = "zzzfit-boot"
+
 include("data", "upms", "platform", "web", "app")
 
 pluginManagement {

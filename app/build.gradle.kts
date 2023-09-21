@@ -33,7 +33,3 @@ dependencies {
 //    testImplementation("io.rest-assured:rest-assured")
     testImplementation("io.rest-assured:kotlin-extensions")
 }
-
-tasks.withType<BootBuildImage> {
-
-}
