@@ -163,4 +163,9 @@ subprojects {
             jvmTarget = "17"
         }
     }
+
+    tasks.withType<JacocoReport> {
+        dependsOn(tasks.withType<Test>())
+        reports.xml.required = true
+    }
 }
