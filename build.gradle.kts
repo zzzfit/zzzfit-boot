@@ -102,48 +102,6 @@ subprojects {
 //            dependency("com.querydsl:querydsl-core:$queryDslVersion")
 //            dependency("com.querydsl:querydsl-jpa:$queryDslVersion")
 //            dependency("com.querydsl:querydsl-kotlin-codegen:$queryDslVersion")
-
-//
-//
-//            dependency("org.fisco-bcos.java-sdk:fisco-bcos-java-sdk:2.8.0")
-//            dependency("io.swagger:swagger-annotations:1.5.24")
-//            dependency("io.springfox:springfox-swagger2:2.9.2")
-//            dependency("io.springfox:springfox-swagger-ui:2.9.2")
-//            dependency("com.google.guava:guava:30.1.1-jre")
-//            dependency("com.cronutils:cron-utils:9.1.5")
-//            dependency("p6spy:p6spy:3.9.1")
-//            dependency("com.fasterxml.jackson.core:jackson-annotations:2.12.5")
-//            dependency("com.fasterxml.jackson.core:jackson-databind:2.12.5")
-//            dependency("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.5")
-//            dependency("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.5")
-//            dependency("com.fasterxml.jackson.module:jackson-module-paranamer:2.12.5")
-//
-//            dependency("com.squareup.okhttp3:okhttp:4.9.1")
-//            dependency("com.squareup.okhttp3:logging-interceptor:4.9.1")
-//            dependency("io.github.openfeign:feign-jackson:11.6")
-//            dependency("io.github.openfeign:feign-okhttp:11.6")
-//            dependency("org.apache.httpcomponents:httpclient:4.5.13")
-//            dependency("org.apache.skywalking:apm-agent-core:8.3.0")
-//            dependency("org.apache.skywalking:apm-datacarrier:8.3.0")
-//            dependency("org.apache.commons:commons-math3:3.6.1")
-//            dependency("org.jpmml:pmml-evaluator:1.5.15")
-//            dependency("io.reactivex.rxjava2:rxjava:2.2.21")
-//
-//            dependency("com.jcraft:jsch:0.1.55")
-//            dependency("com.github.ben-manes.caffeine:caffeine:2.8.8")
-//            dependency("com.alibaba:easyexcel:2.2.11")
-//            dependency("commons-beanutils:commons-beanutils:1.9.4")
-//            dependency("com.opencsv:opencsv:5.5.2")
-//            dependency("org.springframework.retry:spring-retry:1.3.1")
-//            dependency("org.xbib.jdbc:jdbc-driver-csv:1.2.0")
-//            dependency("io.grpc:grpc-protobuf:1.40.1")
-//            dependency("io.grpc:grpc-kotlin-stub:1.1.0")
-//            dependency("io.grpc:grpc-core:1.40.1")
-//            dependency("io.grpc:grpc-stub:1.40.1")
-//            dependency("com.google.protobuf:protobuf-java:3.17.0")
-//            dependency("org.quartz-scheduler:quartz:2.3.2")
-//            dependency("com.google.code.gson:gson:2.8.8")
-//            dependency("org.dom4j:dom4j:2.1.3")
         }
     }
 
